@@ -48,13 +48,12 @@ function Update() {
 		let parsedQuery = query.replace(/(update|set)/g, "@");
 		let tokenizedQuery = parsedQuery.match(/@([a-zA-Z0-9 ,=]+)/g);
 		let table = tokenizedQuery[0].replace(/[@ ]*/g, "");
-		let columns = tokenizedQuery[1].replace(/[@ ]*/g, "").split(",");
+		let columns = tokenizedQuery[1].replace(/[@]*/g, "").split(",");
 		let change = {};
 		for (let column of columns) {
 			let parts = column.split(/\=/);
-			change[parts[0]] = parts[1];
+			change[parts[0].trim()] = parts[1].trim();
 		}
-		console.log(change);
 		return {table, change};
 	}
 
@@ -79,10 +78,9 @@ function Update() {
 };
 
 let select = new Select();
-let result = select.execute("select name, age from author where age = 45");
-console.log(result);
+console.log(select.execute("select name, age from author where age = 45"));
 
 let update = new Update();
 update.execute("update author set name = Linus Torvalds, age = 50");
 
-console.log(tables);
+console.log(select.execute("select name, age from author where age = 45"));
