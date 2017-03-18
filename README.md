@@ -39,4 +39,4 @@ execute(query) -> responsável por orquestrar as chamadas para parse, validate e
 
 Agora, com dois comandos diferentes, select e update, crie duas funções construturas diferentes para gerenciar cada um dos comandos.
 
-6 - Classes, herança, generalização
+6 - Classes, inheritance, generalization, method, template method, this.
