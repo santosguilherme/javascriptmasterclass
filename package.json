@@ -4,7 +4,7 @@
   "description": "",
   "main": "",
   "scripts": {
-    "babel": "babel . -d dist --watch --ignore=\"node_modules\",\"dist\""
+    "babel": "babel src/ -d dist --watch"
   },
   "author": "Rodrigo Branas",
   "license": "ISC",
