@@ -1,0 +1,1 @@
+Crie uma implementação, utilizando Class e introduzindo o padrão Template Method para generalizar a execução do comando, deixando com que cada classe realize a implementação de uma forma específica.

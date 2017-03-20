@@ -1,0 +1,3 @@
+Dentro do objeto "tables" e dentro do objeto "author", crie um objeto chamado "data", contendo apenas um objeto. Retorne um objeto contendo apenas as colunas selecionadas.
+
+Dicas: Percorra as colunas com for/of e utilize a notação de [] tanto para definir as propriedades em um objeto de retorno quanto para buscar os valores armazenados na tabela. Lembra-se que você pode utilizar Object.assign(obj, {key: value}) para definir novas propriedades em um objeto.
