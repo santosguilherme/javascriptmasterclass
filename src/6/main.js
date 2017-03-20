@@ -2,20 +2,36 @@ let tables = {
 	author: {
 		model: {
 			name: 'string',
-			age: 'number'
+			age: 'number',
+			city: 'string',
+			state: 'string'
 		},
-		data: {
+		data: [{
 			name: "Douglas Crockford",
-			age: 45
-		}
+			age: 62,
+			city: "Frostbite Falls",
+			state: "Minesotta",
+			country: "United States"
+		},
+		{
+			name: "Linus Torvalds",
+			age: 47,
+			city: "Helsinki",
+			state: "Uusimaa",
+			country: "Finland"
+		}]
 	}
 };
 
 class Command {
+	constructor(tables) {
+		this.tables = tables;
+	}
+
 	execute(query) {
 		let parsedQuery = this.parse(query);
 		this.validate(parsedQuery);
-		return this.executeCommand(parsedQuery);
+		return this.process(parsedQuery);
 	}
 }
 
@@ -26,23 +42,26 @@ class Select extends Command {
 		let tokenizedQuery = parsedQuery.match(/@([a-z0-9 ,=]+)/g);
 		let columns = tokenizedQuery[0].replace(/[@ ]*/g, "").split(",");
 		let table = tokenizedQuery[1].replace(/[@ ]*/g, "");
-		let clausules = tokenizedQuery[2].replace(/[@ ]*/g, "");
-		return {columns, table, clausules};
+		return {columns, table};
 	}
 
 	validate(parsedQuery) {
 		for(let column of parsedQuery.columns) {
-			if (column in tables[parsedQuery.table].model) continue;
+			if (column in this.tables[parsedQuery.table].model) continue;
 			throw `A coluna ${column} não existe na tabela ${parsedQuery.table}`
 		}
 	}
 
-	executeCommand(parsedQuery) {
-		var result = {};
-		for(let column of parsedQuery.columns) {
-			Object.assign(result, {[column]: tables[parsedQuery.table].data[column]});
+	process(parsedQuery) {
+		var results = [];
+		for(let row of this.tables[parsedQuery.table].data) {
+			var result = {};
+			for(let column of parsedQuery.columns) {
+				Object.assign(result, {[column]: row[column]});
+			}
+			results.push(result);
 		}
-		return result;
+		return results;
 	}
 }
 
@@ -68,17 +87,19 @@ class Update extends Command {
 		}
 	}
 
-	executeCommand (parsedQuery) {
-		for(let column in parsedQuery.change) {
-			tables[parsedQuery.table].data[column] = parsedQuery.change[column];
+	process (parsedQuery) {
+		for(let row of this.tables[parsedQuery.table].data) {
+			for(let column in parsedQuery.change) {
+				row[column] = parsedQuery.change[column];
+			}
 		}
 	}
 }
 
-let select = new Select();
-console.log(select.execute("select name, age from author where age = 45"));
+let select = new Select(tables);
+console.log(select.execute("select name, age from author"));
 
-let update = new Update();
+let update = new Update(tables);
 update.execute("update author set name = Linus Torvalds, age = 50");
 
-console.log(select.execute("select name, age from author where age = 45"));
+console.log(select.execute("select name, age from author"));
