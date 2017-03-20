@@ -1,5 +1,5 @@
 try {
-	let query = "select nome from author where age = 45";
+	let query = "select nome from author";
 
 	let parsedQuery = query.replace(/(select|from|where)/g, "@");
 
@@ -7,7 +7,6 @@ try {
 
 	let columns = tokenizedQuery[0].replace(/[@ ]*/g, "").split(",");
 	let table = tokenizedQuery[1].replace(/[@ ]*/g, "");
-	let clausules = tokenizedQuery[2].replace(/[@ ]*/g, "");
 
 	let tables = {
 		author: {

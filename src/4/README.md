@@ -1,11 +1,27 @@
+Exercício: 4
+Tempo: 10 minutos
+
+Instruções:
+
 Separe as etapas do processo em 4 funções: 
 
-parse (query) -> responsável por realizar o parse da query, criando um objeto contendo columns, table e clausules.
+parse (query) -> responsável por realizar o parse da query, retornando um objeto contendo as propriedades: columns, table e clauses.
 
-Dica: Utilize object shorthand notation para montar o objeto de retorno
+validate (tables, parsedQuery) -> responsável por validar a query, não retornando nada ou lançando uma mensagem de erro em caso de problemas.
 
-validate (tables, parsedQuery) -> responsável por validar a query, retornando undefined ou lançando uma mensagem de erro.
+process (tables, parsedQuery) -> responsável por processar a query, retornando os dados.
 
-extract (tables, parsedQuery) -> responsável por extrair os dados em um objeto contendo as colunas selecionadas.
+execute(tables, query) -> responsável por orquestrar as chamadas para as funções: parse, validate e process.
 
-execute(query) -> responsável por orquestrar as chamadas para parse, validate e extract.
+Resultado esperado:
+
+[ { id: 1, name: 'Douglas Crockford', age: 62 },
+  { id: 2, name: 'Linus Torvalds', age: 47 } ]
+
+Dica: 
+
+Utilize object shorthand notation para montar o objeto de retorno.
+
+Conteúdo abordado neste exercício:
+
+* Function

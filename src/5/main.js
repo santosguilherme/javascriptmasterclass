@@ -2,23 +2,34 @@ let tables = {
 	author: {
 		model: {
 			name: 'string',
-			age: 'number'
+			age: 'number',
+			city: 'string',
+			state: 'string'
 		},
-		data: {
+		data: [{
 			name: "Douglas Crockford",
-			age: 45
-		}
+			age: 62,
+			city: "Frostbite Falls",
+			state: "Minesotta",
+			country: "United States"
+		},
+		{
+			name: "Linus Torvalds",
+			age: 47,
+			city: "Helsinki",
+			state: "Uusimaa",
+			country: "Finland"
+		}]
 	}
 };
 
-function Select() {
+function Select(tables) {
 	function parse (query) {
 		let parsedQuery = query.replace(/(select|from|where)/g, "@");
 		let tokenizedQuery = parsedQuery.match(/@([a-z0-9 ,=]+)/g);
 		let columns = tokenizedQuery[0].replace(/[@ ]*/g, "").split(",");
 		let table = tokenizedQuery[1].replace(/[@ ]*/g, "");
-		let clausules = tokenizedQuery[2].replace(/[@ ]*/g, "");
-		return {columns, table, clausules};
+		return {columns, table};
 	}
 
 	function validate (parsedQuery) {
@@ -28,22 +39,26 @@ function Select() {
 		}
 	}
 
-	function extract (parsedQuery) {
-		var result = {};
-		for(let column of parsedQuery.columns) {
-			Object.assign(result, {[column]: tables[parsedQuery.table].data[column]});
+	function process (parsedQuery) {
+		var results = [];
+		for(let row of tables[parsedQuery.table].data) {
+			var result = {};
+			for(let column of parsedQuery.columns) {
+				Object.assign(result, {[column]: row[column]});
+			}
+			results.push(result);
 		}
-		return result;
+		return results;
 	}
 
 	this.execute = function (query) {
 		let parsedQuery = parse(query);
 		validate(parsedQuery);
-		return extract(parsedQuery);
+		return process(parsedQuery);
 	}
 };
 
-function Update() {
+function Update(tables) {
 	function parse (query) {
 		let parsedQuery = query.replace(/(update|set)/g, "@");
 		let tokenizedQuery = parsedQuery.match(/@([a-zA-Z0-9 ,=]+)/g);
@@ -64,23 +79,25 @@ function Update() {
 		}
 	}
 
-	function update (parsedQuery) {
-		for(let column in parsedQuery.change) {
-			tables[parsedQuery.table].data[column] = parsedQuery.change[column];
+	function process (parsedQuery) {
+		for(let row of tables[parsedQuery.table].data) {
+			for(let column in parsedQuery.change) {
+				row[column] = parsedQuery.change[column];
+			}
 		}
 	}
 
 	this.execute = function (query) {
 		let parsedQuery = parse(query);
 		validate(parsedQuery);
-		update(parsedQuery);
+		process(parsedQuery);
 	}
 };
 
-let select = new Select();
-console.log(select.execute("select name, age from author where age = 45"));
+let select = new Select(tables);
+console.log(select.execute("select name, age from author"));
 
-let update = new Update();
-update.execute("update author set name = Linus Torvalds, age = 50");
+let update = new Update(tables);
+update.execute("update author set name = Martin Fowler, age = 54");
 
-console.log(select.execute("select name, age from author where age = 45"));
+console.log(select.execute("select name, age from author"));

@@ -1,5 +1,4 @@
 Exercício: 3
-Título: Extract
 Tempo: 15 minutos
 
 Instruções:
@@ -39,3 +38,4 @@ Conteúdo abordado neste exercício:
 * Object.assign
 * for/of
 * Array.prototype.push
+

@@ -1,5 +1,4 @@
 Exercício: 2
-Título: Validate
 Tempo: 15 minutos
 
 Instruções:
@@ -27,7 +26,7 @@ Erros sendo lançados caso a query tenha alguma inconsistência relacionada ao n
 Testes:
 
 try {
-	let query = "select nome from author where age = 45";
+	let query = "select nome from author";
 	...
 catch (e) {
 	console.log((e === "A coluna nome não existe na tabela author") ? "OK" : "FAIL");	

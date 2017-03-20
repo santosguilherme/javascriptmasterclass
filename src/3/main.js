@@ -1,4 +1,4 @@
-let query = "select name, age from author where age = 45";
+let query = "select name, age from author";
 
 let parsedQuery = query.replace(/(select|from|where)/g, "@");
 
@@ -6,7 +6,6 @@ let tokenizedQuery = parsedQuery.match(/@([a-z0-9 ,=]+)/g);
 
 let columns = tokenizedQuery[0].replace(/[@ ]*/g, "").split(",");
 let table = tokenizedQuery[1].replace(/[@ ]*/g, "");
-let clauses = tokenizedQuery[2].replace(/[@ ]*/g, "").split("and");
 
 let tables = {
 	author: {
@@ -32,6 +31,8 @@ let tables = {
 		}]
 	}
 };
+
+if (!(table in tables)) throw `A tabela ${table} não existe`;
 
 for(let column of columns) {
 	if (column in tables[table].model) continue;
