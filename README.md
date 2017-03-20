@@ -3,8 +3,6 @@
 
 Ao longo do treinamento, vamos construir, passo a passo, um interpretador para a linguagem SQL, com o objetivo de interagir com um modelo de objetos.
 
-...
-
 1 - Dada a query: "select name, age from author where age = 45", extraia a coluna "name" e "age", a tabela "author" e a cláusula "age = 45".
 
 Dicas: Explore a API da String, podendo utilizar as operações match, replace e split associado com uma RegExp. Outras operações como trim, podem ser úteis.
@@ -39,4 +37,4 @@ execute(query) -> responsável por orquestrar as chamadas para parse, validate e
 
 Agora, com dois comandos diferentes, select e update, crie duas funções construturas diferentes para gerenciar cada um dos comandos.
 
-6 - Classes, inheritance, generalization, method, template method, this.
+6 - Crie uma implementação, utilizando Class e introduzindo o padrão Template Method para generalizar a execução do comando, deixando com que cada classe realize a implementação de uma forma específica.
