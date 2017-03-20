@@ -38,3 +38,5 @@ execute(query) -> responsável por orquestrar as chamadas para parse, validate e
 Agora, com dois comandos diferentes, select e update, crie duas funções construturas diferentes para gerenciar cada um dos comandos.
 
 6 - Crie uma implementação, utilizando Class e introduzindo o padrão Template Method para generalizar a execução do comando, deixando com que cada classe realize a implementação de uma forma específica.
+
+7 - Utilizando Modules, crie 4 módulos: Command.js, Select.js, Update.js e main.js
