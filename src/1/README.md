@@ -1,5 +1,38 @@
-Dada a query: "select name, age from author where age = 45", extraia a coluna "name" e "age", a tabela "author" e a cláusula "age = 45".
+Exercício: 1
+Título: Parse
+Tempo: 15 minutos
 
-Dicas: Explore a API da String, podendo utilizar as operações match, replace e split associado com uma RegExp. Outras operações como trim, podem ser úteis.
+Instruções:
 
-Saída: columns = "name,age", table = "author", clausules = "age=45"
+Dada a query: "select name, age from author where age = 45"
+
+1 - Extraia as colunas
+2 - Extraia o nome da tabela
+3 - Extraia as cláusulas
+
+Resultado esperado:
+
+Devem ser criadas 3 variáveis com os valores abaixo:
+
+columns   -> "name,age"
+table     -> "author"
+clauses -> "age=45"
+
+Testes:
+
+console.log((columns === "name,age") ? "OK" : "FAIL");
+console.log((table === "author") ? "OK" : "FAIL");
+console.log((clausules === "age=45") ? "OK" : "FAIL");
+
+Dicas: 
+
+Explore ao máximo as operações disponíveis na String API como: match, replace e split, juntamente com expressões regulares.
+
+Conteúdo abordado neste exercício: 
+
+* String
+* String.prototype.replace 
+* String.prototype.match 
+* String.prototype.split
+* String.prototype.trim
+* RegExp

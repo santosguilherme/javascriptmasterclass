@@ -1,0 +1,1 @@
+Altere a estrutura dos dados de um Object para um Array. Implemente a cláusula where, tanto no comando select quanto no update. Devem ser permitidos os operadores =, < e >.

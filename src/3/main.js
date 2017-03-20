@@ -6,18 +6,30 @@ let tokenizedQuery = parsedQuery.match(/@([a-z0-9 ,=]+)/g);
 
 let columns = tokenizedQuery[0].replace(/[@ ]*/g, "").split(",");
 let table = tokenizedQuery[1].replace(/[@ ]*/g, "");
-let clausules = tokenizedQuery[2].replace(/[@ ]*/g, "");
+let clauses = tokenizedQuery[2].replace(/[@ ]*/g, "").split("and");
 
 let tables = {
 	author: {
 		model: {
 			name: 'string',
-			age: 'number'
+			age: 'number',
+			city: 'string',
+			state: 'string'
 		},
-		data: {
+		data: [{
 			name: "Douglas Crockford",
-			age: 50
-		}
+			age: 62,
+			city: "Frostbite Falls",
+			state: "Minesotta",
+			country: "United States"
+		},
+		{
+			name: "Linus Torvalds",
+			age: 47,
+			city: "Helsinki",
+			state: "Uusimaa",
+			country: "Finland"
+		}]
 	}
 };
 
@@ -26,8 +38,13 @@ for(let column of columns) {
 	throw `A coluna ${column} não existe na tabela ${table}`
 }
 
-var result = {};
-for(let column of columns) {
-	Object.assign(result, {[column]: tables[table].data[column]});
+var results = [];
+for(let row of tables[table].data) {
+	var result = {};
+	for(let column of columns) {
+		Object.assign(result, {[column]: row[column]});
+	}
+	results.push(result);
 }
-console.log(result);
+
+console.log(results);

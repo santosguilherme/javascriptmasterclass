@@ -8,4 +8,6 @@ let columns = tokenizedQuery[0].replace(/[@ ]*/g, "");
 let table = tokenizedQuery[1].replace(/[@ ]*/g, "");
 let clausules = tokenizedQuery[2].replace(/[@ ]*/g, "");
 
-console.log(columns, table, clausules);
+console.log((columns === "name,age") ? "OK" : "FAIL");
+console.log((table === "author") ? "OK" : "FAIL");
+console.log((clausules === "age=45") ? "OK" : "FAIL");
