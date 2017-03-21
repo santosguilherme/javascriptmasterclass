@@ -66,3 +66,4 @@ _insert into author (id, name, age) values (2, Linus Torvalds, 47)_
 * Array.prototype.push
 * String.prototype.startsWith
 * this
+* method

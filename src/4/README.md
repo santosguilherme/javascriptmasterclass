@@ -45,3 +45,4 @@ Parte 3
 * for/of
 * Array.prototype.push
 * throw
+* Constructor Function

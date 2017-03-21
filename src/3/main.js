@@ -1,10 +1,10 @@
 let database = {
 	tables: {},
-	execute: function (statement) {
+	execute(statement) {
 		if (statement.startsWith("create table")) return this.createTable(statement);
 		if (statement.startsWith("insert")) return this.insert(statement);
 	},
-	createTable: function (statement) {
+	createTable(statement) {
 		let parsedStatement = statement.match(/create table ([a-z]+) (\(.*\))/);
 		let tableName = parsedStatement[1];
 		let columns = parsedStatement[2];
@@ -22,7 +22,7 @@ let database = {
 		}
 		return true;
 	},
-	insert: function (statement) {
+	insert(statement) {
 		let parsedStatement = statement.match(/insert into ([a-z]+) (\(.*\)) values (\(.*\))/);
 		let tableName = parsedStatement[1];
 		let columns = parsedStatement[2];
