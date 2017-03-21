@@ -3,11 +3,15 @@ Tempo: 15 minutos
 
 Instruções:
 
-1 - Crie um objeto chamado "tables"
-2 - Dentro do objeto "tables", crie um outro objeto chamado "author".
-3 - Dentro do objeto "author", crie um outro Object chamado "model", onde as suas chaves representam os nomes das colunas e os valores, os tipos das colunas.
+Etapa 1
 
-As colunas da tabela "author" são: 
+Primeiro, vamos criar a representação da nossa base de dados com um conjunto de objetos.
+
+1 - Crie um objeto chamado "tables"
+2 - Dentro do objeto "tables", crie um outro objeto chamado "author"
+3 - Dentro do objeto "author", crie um outro objeto chamado "model", onde as suas chaves representam os nomes das colunas e os valores, os tipos das colunas.
+
+As colunas da tabela "author" são:
 
 id      -> number
 name    -> string
@@ -16,21 +20,13 @@ city    -> string
 state   -> string
 country -> string
 
-4 - Analise os dados obtidos após o processo de Parse e faça a validação do nome da tabela, nome das coluna selecionada e nome da coluna utilizada na cláusula, lancando um erro caso alguma inconsistência seja encontrada.
+Etapa 2
 
-Resultado esperado:
+1 - Analise os dados obtidos após o processo de parse e faça a validação do nome da tabela, nome das coluna selecionada e nome da coluna utilizada na cláusula, lancando um erro caso alguma inconsistência seja encontrada.
 
-Objeto "tables" criado.
+Resultado:
+
 Erros sendo lançados caso a query tenha alguma inconsistência relacionada ao nome das colunas e nome da tabela.
-
-Testes:
-
-try {
-	let query = "select nome from author";
-	...
-catch (e) {
-	console.log((e === "A coluna nome não existe na tabela author") ? "OK" : "FAIL");	
-}
 
 Dicas: 
 

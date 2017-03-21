@@ -5,20 +5,9 @@ Instruções:
 
 Dada a query: "select name, age from author"
 
-1 - Extraia as colunas
-2 - Extraia o nome da tabela
+1 - Extraia os dados da tabela
 
-Resultado esperado:
-
-Devem ser criadas 3 variáveis com os valores abaixo:
-
-columns   -> "name,age"
-table     -> "author"
-
-Testes:
-
-console.log((columns === "name,age") ? "OK" : "FAIL");
-console.log((table === "author") ? "OK" : "FAIL");
+Resultado:
 
 Dicas: 
 
