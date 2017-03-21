@@ -1,19 +1,29 @@
-Exercício: 1
-Tempo: 15 minutos
+### Exercício 1
 
-Instruções:
+#### Tempo
+15 minutos
 
-Dada a query: "select name, age from author"
+#### Instruções:
 
-1 - Extraia os dados da tabela
+Dada o comando: 
 
-Resultado:
+_create table author (id number, name string, city string, state string, country string)_
 
-Dicas: 
+1. Extraia o nome da tabela e armazene na variável "tableName"
+2. Extraia as colunas da tabela e armazene na variável "columns"
 
-Explore ao máximo as operações disponíveis na String API como: match, replace e split, juntamente com expressões regulares.
+#### Resultado
 
-Conteúdo abordado neste exercício: 
+```javascript
+tableName = "author"
+columns = [ 'id number',' name string',' age number',' city string',' state string',' country string']
+```
+
+#### Dicas
+
+> Explore ao máximo as operações disponíveis na String API como: match, replace e split, juntamente com expressões regulares.
+
+#### Conteúdo abordado neste exercício
 
 * String
 * String.prototype.replace 

@@ -1,41 +1,65 @@
-Exercício: 3
-Tempo: 15 minutos
+### Exercício 3
 
-Instruções:
+#### Tempo
+20 minutos
 
-1 - Dentro do objeto "tables" e dentro do objeto "author", crie uma propriedade chamada "data", contendo um array com dois objetos.
+#### Instruções
 
-Objetos:
+Parte 1
 
-id      -> 1
-name    -> "Douglas Crockford"
-age     -> 62
-city    -> "Frostbite Falls"
-state   -> "Minesotta"
-country -> "United States"
+1. Crie uma função chamada "createTable", que recebe o statement por parâmetro.
+2. Crie uma função chamada "execute", que recebe o statement por parâmetro e invoca a função correspondente ao comando.
 
-id      -> 2
-name    -> "Linus Torvalds"
-age     -> 47
-city    -> "Helsinki"
-state   -> "Uusimaa"
-country -> "Finland"
+Parte 2
 
-2 - Dada a query: "select id, name, age from author", retorne apenas as colunas selecionadas.
+Dados os comandos: 
 
-Resultado esperado:
+_insert into author (id, name, age) values (1, Douglas Crockford, 62)_
+_insert into author (id, name, age) values (2, Linus Torvalds, 47)_
 
-[ { id: 1, name: 'Douglas Crockford', age: 62 },
-  { id: 2, name: 'Linus Torvalds', age: 47 } ]
+1. Crie uma função chamada "insert", que recebe o statement por parâmetro.
+2. Extraia o nome da tabela, as colunas e os valores.
+3. Monte o objeto que deve ser inserido.
+4. Insira o objeto.
+5. Na função "execute", inclua o comando "insert"
 
-Dicas: 
 
-Percorra as colunas com for/of e utilize a notação de [] tanto para definir as propriedades em um objeto de retorno quanto para buscar os valores armazenados na tabela. Lembra-se que você pode utilizar Object.assign(obj, {key: value}) para definir novas propriedades em um objeto.
+#### Resultado
 
-Conteúdo abordado neste exercício:
+```javascript
+{
+  "tables": {
+    "author": {
+      "columns": {
+        "id": "number",
+        "name": "string",
+        "age": "number",
+        "city": "string",
+        "state": "string",
+        "country": "string"
+      },
+      "data": [{
+        "id": "1",
+        "name": "Douglas Crockford",
+        "age": "62"
+      }, {
+        "id": "2",
+        "name": "Linus Torvalds",
+        "age": "47"
+      }]
+    }
+  }
+}
+```
 
-* Object
-* Object.assign
-* for/of
+#### Dicas
+
+> Utilize um for, com índice, para percorrer ao mesmo tempo o array de colunas e de valores. Utilize a operação push para incluir no array "data".
+
+#### Conteúdo abordado neste exercício
+
+* Function
+* for
+* if
 * Array.prototype.push
-
+* String.prototype.startsWith

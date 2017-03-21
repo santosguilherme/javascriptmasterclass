@@ -1,43 +1,48 @@
-Exercício: 2
-Tempo: 15 minutos
+### Exercício 2
 
-Instruções:
+#### Tempo
+15 minutos
 
-Etapa 1
+#### Instruções
 
-Primeiro, vamos criar a representação da nossa base de dados com um conjunto de objetos.
+Dada o comando:
 
-1 - Crie um objeto chamado "tables"
-2 - Dentro do objeto "tables", crie um outro objeto chamado "author"
-3 - Dentro do objeto "author", crie um outro objeto chamado "model", onde as suas chaves representam os nomes das colunas e os valores, os tipos das colunas.
+_create table author (id number, name string, city string, state string, country string)_
 
-As colunas da tabela "author" são:
+1. Crie um objeto chamado "database".
+2. Dentro do objeto "database", crie um objeto chamado "tables".
+3. Dentro do objeto "tables", crie um objeto com o nome da tabela.
+4. Dentro do objeto criado com o nome da tabela, crie um objeto chamado "columns", onde as chaves são representadas pelo nome da coluna e o valor com o tipo da coluna.
+5. Dentro do objeto criado com nome da tabela, crie um array chamado "data".
 
-id      -> number
-name    -> string
-age     -> number
-city    -> string
-state   -> string
-country -> string
+#### Resultado
 
-Etapa 2
+```javascript
+{
+	"tables": {
+		"author": {
+			"columns": {
+				"id": "number",
+				"name": "string",
+				"age": "number",
+				"city": "string",
+				"state": "string",
+				"country": "string"
+			},
+			"data": []
+		}
+	}
+}
+```
 
-1 - Analise os dados obtidos após o processo de parse e faça a validação do nome da tabela, nome das coluna selecionada e nome da coluna utilizada na cláusula, lancando um erro caso alguma inconsistência seja encontrada.
+#### Dicas
 
-Resultado:
+> Percorra as colunas com for/of e utilize a notação de [] tanto para acessar os elementos do array quanto para criar as propriedades nos objetos.
 
-Erros sendo lançados caso a query tenha alguma inconsistência relacionada ao nome das colunas e nome da tabela.
-
-Dicas: 
-
-Percorra as colunas com for/of e utilize a notação de [] para localizar dinamicamente a tabela, utilizando o operador "in" para consultar se a coluna existe. A mensagem de erro pode ser montada com Template Literals para facilitar a interpolação de variáveis.
-
-Conteúdo abordado neste exercício:
+#### Conteúdo abordado neste exercício
 
 * Object
-* in
+* Manipulação dinâmica das propriedades dos objetos
 * for/of
-* Template Literals
-* throw
-* try
-* catch
+* Array
+* String.prototype.trim()

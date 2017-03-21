@@ -1,5 +1,6 @@
-let query = "select name, age from author";
-let parsedQuery = query.replace(/(select|from)/g, "@");
-let tokenizedQuery = parsedQuery.match(/@([a-z0-9 ,]+)/g);
-let columns = tokenizedQuery[0].replace(/[@ ]*/g, "");
-let table = tokenizedQuery[1].replace(/[@ ]*/g, "");
+let statement = "create table author (id number, name string, age number, city string, state string, country string)";
+let parsedStatement = statement.match(/create table ([a-z]+) (\(.*\))/);
+let tableName = parsedStatement[1];
+let columns = parsedStatement[2];
+columns = columns.replace(/(\(|\))/g, "").split(",");
+console.log(tableName, columns);

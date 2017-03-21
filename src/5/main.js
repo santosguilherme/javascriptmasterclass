@@ -23,8 +23,21 @@ let tables = {
 	}
 };
 
-function Select(tables) {
-	function parse (query) {
+class Command {
+	constructor(tables) {
+		this.tables = tables;
+	}
+
+	execute(query) {
+		let parsedQuery = this.parse(query);
+		this.validate(parsedQuery);
+		return this.process(parsedQuery);
+	}
+}
+
+class Select extends Command {
+
+	parse(query) {
 		let parsedQuery = query.replace(/(select|from)/g, "@");
 		let tokenizedQuery = parsedQuery.match(/@([a-z0-9 ,=]+)/g);
 		let columns = tokenizedQuery[0].replace(/[@ ]*/g, "").split(",");
@@ -32,16 +45,16 @@ function Select(tables) {
 		return {columns, table};
 	}
 
-	function validate (parsedQuery) {
+	validate(parsedQuery) {
 		for(let column of parsedQuery.columns) {
-			if (column in tables[parsedQuery.table].model) continue;
+			if (column in this.tables[parsedQuery.table].model) continue;
 			throw `A coluna ${column} não existe na tabela ${parsedQuery.table}`
 		}
 	}
 
-	function process (parsedQuery) {
+	process(parsedQuery) {
 		var results = [];
-		for(let row of tables[parsedQuery.table].data) {
+		for(let row of this.tables[parsedQuery.table].data) {
 			var result = {};
 			for(let column of parsedQuery.columns) {
 				Object.assign(result, {[column]: row[column]});
@@ -50,16 +63,11 @@ function Select(tables) {
 		}
 		return results;
 	}
+}
 
-	this.execute = function (query) {
-		let parsedQuery = parse(query);
-		validate(parsedQuery);
-		return process(parsedQuery);
-	}
-};
+class Update extends Command {
 
-function Update(tables) {
-	function parse (query) {
+	parse(query) {
 		let parsedQuery = query.replace(/(update|set)/g, "@");
 		let tokenizedQuery = parsedQuery.match(/@([a-zA-Z0-9 ,=]+)/g);
 		let table = tokenizedQuery[0].replace(/[@ ]*/g, "");
@@ -72,32 +80,26 @@ function Update(tables) {
 		return {table, change};
 	}
 
-	function validate (parsedQuery) {
+	validate(parsedQuery) {
 		for(let column in parsedQuery.change) {
 			if (column in tables[parsedQuery.table].model) continue;
 			throw `A coluna ${column} não existe na tabela ${parsedQuery.table}`
 		}
 	}
 
-	function process (parsedQuery) {
-		for(let row of tables[parsedQuery.table].data) {
+	process (parsedQuery) {
+		for(let row of this.tables[parsedQuery.table].data) {
 			for(let column in parsedQuery.change) {
 				row[column] = parsedQuery.change[column];
 			}
 		}
 	}
-
-	this.execute = function (query) {
-		let parsedQuery = parse(query);
-		validate(parsedQuery);
-		process(parsedQuery);
-	}
-};
+}
 
 let select = new Select(tables);
 console.log(select.execute("select name, age from author"));
 
 let update = new Update(tables);
-update.execute("update author set name = Martin Fowler, age = 54");
+update.execute("update author set name = Linus Torvalds, age = 50");
 
 console.log(select.execute("select name, age from author"));

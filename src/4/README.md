@@ -1,27 +1,43 @@
-Exercício: 4
-Tempo: 10 minutos
+### Exercício 4
 
-Instruções:
+#### Tempo
+20 minutos
 
-Separe as etapas do processo em 4 funções: 
+#### Instruções
 
-parse (query) -> responsável por realizar o parse da query, retornando um objeto contendo as propriedades: columns, table e clauses.
+Parte 1
 
-validate (tables, parsedQuery) -> responsável por validar a query, não retornando nada ou lançando uma mensagem de erro em caso de problemas.
+Dada o comando: _select name, age from author_
 
-process (tables, parsedQuery) -> responsável por processar a query, retornando os dados.
+1. Crie uma função chamada "select".
+2. Na função "select", retorne todos os registros considerando apenas as colunas selecionadas.
+3. Na função "execute", inclua o comando "select"
 
-execute(tables, query) -> responsável por orquestrar as chamadas para as funções: parse, validate e process.
+Parte 2
 
-Resultado esperado:
+1. Faça o tratamento de erros, lançando um erro caso a tabela ou a coluna não exista.
 
-[ { id: 1, name: 'Douglas Crockford', age: 62 },
-  { id: 2, name: 'Linus Torvalds', age: 47 } ]
+#### Resultado
 
-Dica: 
+```javascript
+[{
+	"name": "Douglas Crockford",
+	"age": "62"
+}, {
+	"name": "Linus Torvalds",
+	"age": "47"
+}]
+```
 
-Utilize object shorthand notation para montar o objeto de retorno.
+#### Dicas
 
-Conteúdo abordado neste exercício:
+> Percorra as colunas com for/of e utilize a notação de [] tanto para definir as propriedades em um objeto de retorno quanto para buscar os valores armazenados na tabela. Lembra-se que você pode utilizar Object.assign(obj, {key: value}) para definir novas propriedades em um objeto.
 
-* Function
+#### Conteúdo abordado neste exercício
+
+* Object
+* Object.assign
+* in
+* for/of
+* Array.prototype.push
+* throw

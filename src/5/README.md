@@ -1,22 +1,17 @@
-Exercício: 5
+Exercício: 6
 Tempo: 15 minutos
 
 Instruções:
 
-Dada a query: "update author set name = 'Martin Fowler', age = 54", implemente a execução do comando update.
-
-Agora, com dois comandos diferentes, select e update, crie duas funções construturas diferentes para gerenciar cada um dos comandos.
+Crie uma implementação, utilizando Class e introduzindo o padrão Template Method para generalizar a execução do comando, deixando com que cada classe realize a implementação de uma forma específica.
 
 Resultado esperado:
 
-[ { name: 'Linus Torvalds', age: '50' },
-  { name: 'Linus Torvalds', age: '50' } ]
+O mesmo do exercício 5
 
 Dicas:
 
 Conteúdo abordado neste exercício:
 
-* Function
-* Constructor Function
-* this
-* new operator
+* Class
+* constructor
