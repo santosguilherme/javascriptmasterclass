@@ -1,17 +1,29 @@
-Exercício: 6
-Tempo: 15 minutos
+### Exercício 5
 
-Instruções:
+#### Tempo
+15 minutos
 
-Crie uma implementação, utilizando Class e introduzindo o padrão Template Method para generalizar a execução do comando, deixando com que cada classe realize a implementação de uma forma específica.
+#### Instruções
 
-Resultado esperado:
+Parte 1
 
-O mesmo do exercício 5
+1. Converta a implementação da função construtora em uma class
+
+Parte 2
+
+Dada o comando: _update author set name = Martin Fowler, age = 57_
+
+1. Crie um novo método chamado "update".
+2. Vincule o método "update" no método "execute".
+
+#### Resultado
+
+O mesmo do exercício 4
 
 Dicas:
 
-Conteúdo abordado neste exercício:
+### Conteúdo abordado neste exercício
 
-* Class
+* class
 * constructor
+* method

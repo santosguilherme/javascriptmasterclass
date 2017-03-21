@@ -1,4 +1,4 @@
-class Database {
+export default class Database {
 	constructor(name) {
 		this.name = name;
 		this.tables = {};
@@ -8,7 +8,6 @@ class Database {
 		if (statement.startsWith("create table")) return this.createTable(statement);
 		if (statement.startsWith("insert")) return this.insert(statement);
 		if (statement.startsWith("select")) return this.select(statement);
-		if (statement.startsWith("update")) return this.update(statement);
 	}
 
 	createTable(statement) {
@@ -67,35 +66,4 @@ class Database {
 		}
 		return results;
 	}
-
-	update(statement) {
-		let parsedStatement = statement.match(/update (.*) set (.*)/);
-		let tableName = parsedStatement[1];
-		let columns = parsedStatement[2].split(",");
-		if (!(tableName in this.tables)) throw `A tabela ${tableName} não existe`;
-		for(let row of this.tables[tableName].data) {
-			for(let column of columns) {
-				let parsedColumn = column.split("=");
-				let columnName = parsedColumn[0].trim();
-				if (!(columnName in this.tables[tableName].columns)) throw `A coluna ${columnName} não existe`;
-				let columnValue = parsedColumn[1].trim();
-				row[columnName] = columnValue;
-			}
-		}
-	}
 };
-
-let database = new Database();
-
-database.execute("create table author (id number, name string, age number, city string, state string, country string)");
-database.execute("insert into author (id, name, age) values (1, Douglas Crockford, 62)");
-database.execute("insert into author (id, name, age) values (2, Linus Torvalds, 47)");
-let resultsBeforeUpdate = database.execute("select name, age from author");
-console.log(JSON.stringify(resultsBeforeUpdate));
-database.execute("update author set name = Martin Fowler, age = 57");
-let resultsAfterUpdate = database.execute("select name, age from author");
-console.log(JSON.stringify(resultsAfterUpdate));
-
-
-
-
