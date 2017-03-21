@@ -23,6 +23,7 @@ _insert into author (id, name, age) values (2, Linus Torvalds, 47)_
   b. Monte o objeto que deve ser inserido.
   c. Insira o objeto.
 3. Na função "execute", inclua o comando "insert"
+4. Defina a propriedade tables como configurable false
 
 
 #### Resultado

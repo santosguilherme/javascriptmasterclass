@@ -1,7 +1,7 @@
 ### Exercício 4
 
 #### Tempo
-20 minutos
+30 minutos
 
 #### Instruções
 
@@ -16,6 +16,10 @@ Dada o comando: _select name, age from author_
 Parte 2
 
 1. Faça o tratamento de erros, lançando um erro caso a tabela ou a coluna não exista.
+
+Parte 3
+
+1. Mude de objeto para função construtora
 
 #### Resultado
 
