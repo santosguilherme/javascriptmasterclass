@@ -9,7 +9,7 @@ Dada o comando:
 
 ```sql
 create table author (id number, name string, city string, state string, country string)
-``
+```
 
 1. Extraia o nome da tabela e armazene na variável "tableName"
 2. Extraia as colunas da tabela e armazene na variável "columns"
