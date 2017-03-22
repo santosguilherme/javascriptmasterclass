@@ -5,4 +5,25 @@
 
 #### Instruções
 
-Dada a query:
+Dado o comando:
+
+```sql
+select name, age from author where id = 1
+```
+
+1. Considere a cláusula where na expressão regular que extrai os dados do comando
+2. Converta os valores em um objeto onde a chave é a coluna e o valor é o valor
+3. Antes de selecionar as colunas, filtre os dados, mantendo somente aquele que atendem a cláusula where
+
+#### Resultado
+
+#### Dicas
+
+Utilize a operação Array.prototype.filter para filtrar os dados.
+
+#### Conteúdo abordado neste exercício
+
+* Array
+* Array.prototype.filter
+* Array.prototype.map
+* Array.prototype.forEach
