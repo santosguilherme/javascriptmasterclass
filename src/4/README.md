@@ -51,3 +51,5 @@ Parte 3
 * Array.prototype.push
 * throw
 * Constructor Function
+
+Private com defineProperty
