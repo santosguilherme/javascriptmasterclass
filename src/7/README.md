@@ -21,7 +21,7 @@ select name, age from author where id = 1
 database.execute("create table author (id number autoincrement, name string, age number, city string, state string, country string)");
 database.execute("insert into author (name, age) values (Douglas Crockford, 62)");
 database.execute("insert into author (name, age) values (Linus Torvalds, 47)");
-database.execute("select id, name, age from author where id = 1");
+let result = database.execute("select id, name, age from author where id = 1");
 ```
 
 #### Resultado

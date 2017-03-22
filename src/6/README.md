@@ -21,6 +21,30 @@ Parte 2
 4. Extraia cada comando para uma classe específica, que estende a classe "Command"
 5. Divida a lógica de cada comando em 3 métodos: parse, validate e process
 
+#### Cenário
+
+```javascript
+database.execute("create table author (id number autoincrement, name string, age number, city string, state string, country string)");
+database.execute("insert into author (name, age) values (Douglas Crockford, 62)");
+database.execute("insert into author (name, age) values (Linus Torvalds, 47)");
+database.execute("update author set name = Martin Fowler, age = 57");
+let result = database.execute("select id, name, age from author"));
+```
+
+#### Resultado
+
+```javascript
+[{
+	"id": 1,
+	"name": "Martin Fowler",
+	"age": "57"
+}, {
+	"id": 2,
+	"name": "Martin Fowler",
+	"age": "57"
+}]
+```
+
 #### Dicas
 
 #### Conteúdo abordado neste exercício
@@ -29,3 +53,7 @@ Parte 2
 * export
 * default
 * import
+* OO
+* Design Patterns
+* Template Method
+* Factory

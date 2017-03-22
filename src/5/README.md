@@ -20,9 +20,30 @@ update author set name = Martin Fowler, age = 57
 1. Crie um novo método chamado "update".
 2. Vincule o método "update" no método "execute".
 
+#### Cenário
+
+```javascript
+database.execute("create table author (id number autoincrement, name string, age number, city string, state string, country string)");
+database.execute("insert into author (name, age) values (Douglas Crockford, 62)");
+database.execute("insert into author (name, age) values (Linus Torvalds, 47)");
+database.execute("select id, name, age from author");
+database.execute("update author set name = Martin Fowler, age = 57");
+let result = database.execute("select name, age from author");
+```
+
 #### Resultado
 
-O mesmo do exercício 4
+```javascript
+[{
+	"id": 1,
+	"name": "Martin Fowler",
+	"age": "57"
+}, {
+	"id": 2,
+	"name": "Martin Fowler",
+	"age": "57"
+}]
+```
 
 Dicas:
 
