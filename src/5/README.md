@@ -11,7 +11,11 @@ Parte 1
 
 Parte 2
 
-Dada o comando: _update author set name = Martin Fowler, age = 57_
+Dada o comando: 
+
+```sql
+update author set name = Martin Fowler, age = 57
+```
 
 1. Crie um novo método chamado "update".
 2. Vincule o método "update" no método "execute".

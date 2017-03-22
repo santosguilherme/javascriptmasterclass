@@ -47,8 +47,8 @@ let Database = function () {
 
 	function select(statement) {
 		let parsedStatement = statement.match(/select (.*) from (.*)/);
-		let columns = parsedStatement[1].split(",");
-		let tableName = parsedStatement[2];
+		let [undefined, columns, tableName] = parsedStatement;
+		columns = columns.split(",");
 		if (!(tableName in tables)) throw `A tabela ${tableName} não existe`;
 		var results = [];
 		for(let row of tables[tableName].data) {

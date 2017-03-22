@@ -11,7 +11,7 @@ Parte 1
 
 Parte 2
 
-1. Implemente o comando delete.
+1. Implemente o comando truncate table.
 
 #### Dicas
 
