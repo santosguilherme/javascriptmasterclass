@@ -6,24 +6,30 @@ Os comandos suportados são:
 
 #### CREATE TABLE
 
-> _**Sintaxe:** create table tableName (columnName1 columnType1, ..., columnNameN columnTypeN)_
-
-> _**Exemplo:** create table author (id number, name string, age number, city string, state string, country string)_
+```sql
+create table author (id number, name string, age number, city string, state string, country string)
+```
 
 #### INSERT
 
-> _**Sintaxe:** insert into tableName (columnName1, ..., columnNameN) values (columnValue1, ..., columnValueN)_
-
-> _**Exemplo:** insert into author (id, name, age) values (1, Douglas Crockford, 62)_
+```sql
+insert into author (id, name, age) values (1, Douglas Crockford, 62)
+```
 
 #### SELECT
 
-> _**Sintaxe:** select columnName1, ..., columnNameN from tableName where columnName1 = columnValue1 and ... and columnNameN = columnValueN_
-
-> _**Exemplo:** select name, age, city from author where id = 1_
+```sql
+select name, age, city from author where id = 1
+```
 
 #### UPDATE
 
-> _**Sintaxe:** update tableName set (columnName1 = columnValue1, ..., columnNameN = columnValueN) where columnName1 = columnValue1 and ... columnNameN = columnValueN_
+```sql
+update author set age = 45 where id = 2
+```
 
-> _**Exemplo:** update author set age = 45 where id = 2_
+#### TRUNCATE TABLE
+
+```sql
+truncate table author
+```
