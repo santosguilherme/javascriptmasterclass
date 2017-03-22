@@ -27,9 +27,3 @@ select name, age, city from author where id = 1
 ```sql
 update author set age = 45 where id = 2
 ```
-
-#### TRUNCATE TABLE
-
-```sql
-truncate table author
-```

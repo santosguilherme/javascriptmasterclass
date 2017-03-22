@@ -8,7 +8,3 @@ database.execute("insert into author (name, age) values (Linus Torvalds, 47)");
 console.log(database.execute("select id, name, age from author"));
 database.execute("update author set name = Martin Fowler, age = 57");
 console.log(database.execute("select id, name, age from author"));
-database.execute("truncate table author");
-console.log(database.execute("select name, age from author"));
-database.execute("insert into author (name, age) values (Linus Torvalds, 47)");
-console.log(database.execute("select id, name, age from author"));
