@@ -1,4 +1,4 @@
-import Database from './Database';
+import Database from './core/Database';
 
 let database = new Database();
 
