@@ -7,7 +7,9 @@
 
 Dada o comando:
 
-_create table author (id number autoincrement, name string, city string, state string, country string)_
+```sql
+create table author (id number autoincrement, name string, city string, state string, country string)
+```
 
 1. Crie um objeto chamado "database".
 2. Dentro do objeto "database", crie um objeto chamado "tables".

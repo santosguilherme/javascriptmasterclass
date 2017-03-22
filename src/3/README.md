@@ -14,8 +14,11 @@ Parte 2
 
 Dados os comandos: 
 
-_insert into author (name, age) values (Douglas Crockford, 62)_
-_insert into author (name, age) values (Linus Torvalds, 47)_
+```sql
+insert into author (name, age) values (Douglas Crockford, 62)
+insert into author (name, age) values (Linus Torvalds, 47)
+insert into author (name, age) values (Martin Fowler, 54)
+```
 
 1. No objeto "database", crie uma função chamada "insert", que recebe o statement por parâmetro.
 2. Dentro da função "insert":

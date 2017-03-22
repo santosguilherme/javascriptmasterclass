@@ -7,7 +7,11 @@
 
 Parte 1
 
-Dada o comando: _select name, age from author_
+Dada o comando:
+
+```sql
+select name, age from author
+```
 
 1. Crie uma função chamada "select".
 2. Na função "select", retorne todos os registros considerando apenas as colunas selecionadas.
