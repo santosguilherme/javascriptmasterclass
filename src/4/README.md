@@ -25,6 +25,7 @@ Parte 3
 
 ```javascript
 [{
+	"id": 1,
 	"name": "Douglas Crockford",
 	"age": "62"
 }, {

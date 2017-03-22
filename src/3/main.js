@@ -6,41 +6,42 @@ let database = {
 	},
 	createTable(statement) {
 		let parsedStatement = statement.match(/create table ([a-z]+) (\(.*\))/);
-		let tableName = parsedStatement[1];
-		let columns = parsedStatement[2];
+		let [undefined, tableName, columns] = parsedStatement;
 		columns = columns.replace(/(\(|\))/g, "").split(",");
 		this.tables[tableName] = {
 			columns: {},
 			data: []
 		};
 		for(let column of columns) {
-			column = column.trim();
-			let parsedField = column.split(" ");
-			let columnName = parsedField[0];
-			let columnType = parsedField[1];
-			this.tables[tableName].columns[columnName] = columnType;
+			let [name, type, ...options] = column.trim().split(" ");
+			this.tables[tableName].columns[name] = {type, options};
 		}
-		return true;
 	},
 	insert(statement) {
 		let parsedStatement = statement.match(/insert into ([a-z]+) (\(.*\)) values (\(.*\))/);
-		let tableName = parsedStatement[1];
-		let columns = parsedStatement[2];
+		let [undefined, tableName, columns, values] = parsedStatement;
 		columns = columns.replace(/(\(|\))/g, "").split(",");
-		let valuesInsert = parsedStatement[3];
-		valuesInsert = valuesInsert.replace(/(\(|\))/g, "").split(",");
-
+		values = values.replace(/(\(|\))/g, "").split(",");
 		let row = {};
 		for(let i = 0; i < columns.length; i++) {
-			row[columns[i].trim()] = valuesInsert[i].trim();
+			row[columns[i].trim()] = values[i].trim();
+		}
+		for(let column in this.tables[tableName].columns) {
+			for(let option of this.tables[tableName].columns[column].options) {
+				switch (option) {
+					case "autoincrement":
+						this.tables[tableName].columns[column].sequence = this.tables[tableName].columns[column].sequence || 1;
+						row[column] = this.tables[tableName].columns[column].sequence++;
+						break;
+				}
+			}
 		}
 		this.tables[tableName].data.push(row);
-		return true;
 	}
 };
 
-database.execute("create table author (id number, name string, age number, city string, state string, country string)");
-database.execute("insert into author (id, name, age) values (1, Douglas Crockford, 62)");
-database.execute("insert into author (id, name, age) values (2, Linus Torvalds, 47)");
+database.execute("create table author (id number autoincrement, name string, age number, city string, state string, country string)");
+database.execute("insert into author (name, age) values (Douglas Crockford, 62)");
+database.execute("insert into author (name, age) values (Linus Torvalds, 47)");
 
 console.log(JSON.stringify(database));

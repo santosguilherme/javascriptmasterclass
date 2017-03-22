@@ -9,6 +9,7 @@ export default class Database {
 		if (statement.startsWith("insert")) return this.insert(statement);
 		if (statement.startsWith("select")) return this.select(statement);
 		if (statement.startsWith("update")) return this.update(statement);
+		if (statement.startsWith("delete")) return this.delete(statement);
 	}
 
 	createTable(statement) {
@@ -82,5 +83,11 @@ export default class Database {
 				row[columnName] = columnValue;
 			}
 		}
+	}
+
+	delete(statement) {
+		let parsedStatement = statement.match(/delete from (.*)/);
+		let tableName = parsedStatement[1];
+		this.tables[tableName].data = [];
 	}
 };

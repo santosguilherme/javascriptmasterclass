@@ -1,7 +1,6 @@
-let statement = "create table author (id number, name string, age number, city string, state string, country string)";
+let statement = "create table author (id number autoincrement, name string, age number, city string, state string, country string)";
 let parsedStatement = statement.match(/create table ([a-z]+) (\(.*\))/);
-let tableName = parsedStatement[1];
-let columns = parsedStatement[2];
+let [undefined, tableName, columns] = parsedStatement;
 columns = columns.replace(/(\(|\))/g, "").split(",");
 
 let database = {
@@ -14,11 +13,8 @@ database.tables[tableName] = {
 };
 
 for(let column of columns) {
-	column = column.trim();
-	let parsedField = column.split(" ");
-	let columnName = parsedField[0];
-	let columnType = parsedField[1];
-	database.tables[tableName].columns[columnName] = columnType;
+	let [name, type, ...options] = column.trim().split(" ");
+	database.tables[tableName].columns[name] = {type, options};
 }
 
 console.log(JSON.stringify(database));

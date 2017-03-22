@@ -9,6 +9,9 @@ Parte 1
 
 1. Separe a class Database em um arquivo separado.
 
+Parte 2
+
+1. Implemente o comando delete.
 
 #### Dicas
 

@@ -10,3 +10,6 @@ console.log(JSON.stringify(resultsBeforeUpdate));
 database.execute("update author set name = Martin Fowler, age = 57");
 let resultsAfterUpdate = database.execute("select name, age from author");
 console.log(JSON.stringify(resultsAfterUpdate));
+database.execute("delete from author");
+let resultsAfterDelete = database.execute("delete from author");
+console.log(JSON.stringify(resultsAfterDelete));

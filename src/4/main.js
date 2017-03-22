@@ -9,41 +9,40 @@ let Database = function () {
 
 	function createTable(statement) {
 		let parsedStatement = statement.match(/create table ([a-z]+) (\(.*\))/);
-		let tableName = parsedStatement[1];
-		let columns = parsedStatement[2];
+		let [undefined, tableName, columns] = parsedStatement;
 		columns = columns.replace(/(\(|\))/g, "").split(",");
 		tables[tableName] = {
 			columns: {},
 			data: []
 		};
 		for(let column of columns) {
-			column = column.trim();
-			let parsedField = column.split(" ");
-			let columnName = parsedField[0];
-			let columnType = parsedField[1];
-			tables[tableName].columns[columnName] = columnType;
+			let [name, type, ...options] = column.trim().split(" ");
+			tables[tableName].columns[name] = {type, options};
 		}
-		return true;
 	}
 
 	function insert(statement) {
 		let parsedStatement = statement.match(/insert into ([a-z]+) (\(.*\)) values (\(.*\))/);
-		let tableName = parsedStatement[1];
-		if (!(tableName in tables)) throw `A tabela ${tableName} não existe`;
-		let columns = parsedStatement[2];
+		let [undefined, tableName, columns, values] = parsedStatement;
 		columns = columns.replace(/(\(|\))/g, "").split(",");
-		let valuesInsert = parsedStatement[3];
-		valuesInsert = valuesInsert.replace(/(\(|\))/g, "").split(",");
-
+		values = values.replace(/(\(|\))/g, "").split(",");
 		let row = {};
 		for(let i = 0; i < columns.length; i++) {
-			let column = columns[i].trim();
-			if (!(column in tables[tableName].columns)) throw `A coluna ${column} não existe`;
-			let value = valuesInsert[i].trim()
-			row[column] = value;
+			row[columns[i].trim()] = values[i].trim();
+		}
+		for(let column in tables[tableName].columns) {
+			for(let option of tables[tableName].columns[column].options) {
+				switch (option) {
+					case "autoincrement":
+						tables[tableName].columns[column].sequence = tables[tableName].columns[column].sequence || 1;
+						row[column] = tables[tableName].columns[column].sequence++;
+						break;
+					case "required":
+						if (!(column in row)) throw `A coluna ${column} é requerida`;
+				}
+			}
 		}
 		tables[tableName].data.push(row);
-		return true;
 	}
 
 	function select(statement) {
@@ -67,8 +66,9 @@ let Database = function () {
 
 let database = new Database();
 
-database.execute("create table author (id number, name string, age number, city string, state string, country string)");
-database.execute("insert into author (id, name, age) values (1, Douglas Crockford, 62)");
-database.execute("insert into author (id, name, age) values (2, Linus Torvalds, 47)");
-let results = database.execute("select name, age from author");
+database.execute("create table author (id number autoincrement, name string required, age number, city string, state string, country string)");
+database.execute("insert into author (name, age) values (Douglas Crockford, 62)");
+database.execute("insert into author (name, age) values (Linus Torvalds, 47)");
+database.execute("insert into author (name, age) values (Martin Fowler, 54)");
+let results = database.execute("select id, name, age from author");
 console.log(JSON.stringify(results));
