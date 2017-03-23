@@ -7,13 +7,13 @@ export default class Select extends Command {
 		let [undefined, columns, tableName, clauses] = parsedStatement;
 		columns = columns.split(",");
 		clauses = clauses.split("and");
-		let clausesIndex = {};
+		let clausesIndex = [];
 		clauses.forEach(clause => {
 			let [operator] = clause.match(/(<|>|\=)/);
 			let [column, value] = clause.split(operator);
 			column = column.trim();
 			value = value.trim();
-			return clausesIndex[column] = {value, operator};
+			clausesIndex.push({column, value, operator});
 		});
 		return {columns, tableName, clausesIndex};
 	}
@@ -25,21 +25,22 @@ export default class Select extends Command {
 	filter(parsedStatement) {
 		let rows = this.tables[parsedStatement.tableName].data;
 		rows = rows.filter(row => {
-			let ok = false;
+			let ok = true;
 			for(let column in row) {
-				if (column in parsedStatement.clausesIndex) {
-					switch (parsedStatement.clausesIndex[column].operator) {
+				for (let clause of parsedStatement.clausesIndex) {
+					if (column !== clause.column) continue;
+					switch (clause.operator) {
 						case "=":
-							if (row[column] == parsedStatement.clausesIndex[column].value) ok = true;
+							if (!(row[column] == clause.value)) ok = false;
 							break;
 						case ">":
-							if (row[column] > parsedStatement.clausesIndex[column].value) ok = true;
+							if (!(row[column] > clause.value)) ok = false;
 							break;
 						case "<":
-							if (row[column] < parsedStatement.clausesIndex[column].value) ok = true;
+							if (!(row[column] < clause.value)) ok = false;
 							break;
 					}
-					if (ok) break;
+					if (!ok) break;
 				}
 			}
 			return ok;
