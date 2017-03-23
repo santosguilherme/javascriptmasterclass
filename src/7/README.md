@@ -5,7 +5,7 @@
 
 #### Instruções
 
-Dados os comandos:
+Dado o comando:
 
 ```sql
 select id, name, age from author where id = 3 and age > 50 and age < 60
