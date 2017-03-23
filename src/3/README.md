@@ -30,7 +30,6 @@ insert into author (name, age) values (Martin Fowler, 54)
   b. Monte o objeto que deve ser inserido.
   c. Insira o objeto.
 3. Agora temos dois comandos: "createTable" e "insert". Crie uma função chamada "execute", responsável por chamar o método "createTable" ou "insert", dependendo do comando.
-4. Se a coluna tiver a opção "autoincrement", crie uma propriedade chamada "sequence" para armazenar o contador.
 
 
 #### Resultado
@@ -40,40 +39,21 @@ insert into author (name, age) values (Martin Fowler, 54)
   "tables": {
     "author": {
       "columns": {
-        "id": {
-          "type": "number",
-          "options": ["autoincrement"],
-          "sequence": 3
-        },
-        "name": {
-          "type": "string",
-          "options": []
-        },
-        "age": {
-          "type": "number",
-          "options": []
-        },
-        "city": {
-          "type": "string",
-          "options": []
-        },
-        "state": {
-          "type": "string",
-          "options": []
-        },
-        "country": {
-          "type": "string",
-          "options": []
-        }
+        "id": "number",
+        "name": "string",
+        "age": "number",
+        "city": "string",
+        "state": "string",
+        "country": "string"
       },
       "data": [{
+        "id": "1",
         "name": "Douglas Crockford",
-        "age": "62",
-        "id": 1
+        "age": "62"
       }, {
+        "id": "1",
         "name": "Linus Torvalds",
-        "age": "47",
-        "id": 2
+        "age": "47"
       }]
     }
   }
@@ -89,9 +69,7 @@ insert into author (name, age) values (Martin Fowler, 54)
 * Function
 * for
 * if
-* switch
 * Array.prototype.push
 * String.prototype.startsWith
 * this
 * method
-* Inicialização com ||
