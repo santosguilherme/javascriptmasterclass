@@ -1,5 +1,8 @@
 ### Exercício 6
 
+#### Objetivo
+Agora as coisas vão começar a ficar divertidas. Vamos dividir nossa classe "Database", em diversas outras classes, utilizando o conceito de módulos. Na parte 1, vamos basicamente separar o módulo "main" do módulo "Database". Na parte 2, vamos criar uma estrutura de classes, com herança e introduzir os design patterns Template Method e Factory.
+
 ####Tempo
 30 minutos
 
@@ -17,16 +20,17 @@ Parte 2
 
 1. Crie um diretório chamado "command"
 2. Crie uma classe chamada "Command" e dentro dela um método chamado "execute"
-3. O método execute é um Template Method, ou seja, ele define o comportado que deverá ser executado por uma classe que estende a classe "Command". O método deve invocar 3 outros métodos: parse, validate e process
+3. O método "execute" é um Template Method, ou seja, ele define o comportado que deverá ser executado por uma classe que estende a classe "Command". O método deve invocar 3 outros métodos: parse, validate e process
 4. Extraia cada comando para uma classe específica, que estende a classe "Command"
 5. Divida a lógica de cada comando em 3 métodos: parse, validate e process
+6. Crie uma classe chamada "CommandFactory" e isole o comportamento de construção de instâncias relacionadas aos comandos.
 
 #### Cenário
 
 ```javascript
-database.execute("create table author (id number autoincrement, name string, age number, city string, state string, country string)");
-database.execute("insert into author (name, age) values (Douglas Crockford, 62)");
-database.execute("insert into author (name, age) values (Linus Torvalds, 47)");
+database.execute("create table author (id number, name string, age number, city string, state string, country string)");
+database.execute("insert into author (id, name, age) values (1, Douglas Crockford, 62)");
+database.execute("insert into author (id, name, age) values (2, Linus Torvalds, 47)");
 database.execute("update author set name = Martin Fowler, age = 57");
 let result = database.execute("select id, name, age from author"));
 ```

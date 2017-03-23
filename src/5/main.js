@@ -20,8 +20,8 @@ class Database {
 			data: []
 		};
 		for(let column of columns) {
-			let [name, type, ...options] = column.trim().split(" ");
-			this.tables[tableName].columns[name] = {type, options};
+			let [name, type] = column.trim().split(" ");
+			this.tables[tableName].columns[name] = type;
 		}
 	}
 
@@ -33,18 +33,6 @@ class Database {
 		let row = {};
 		for(let i = 0; i < columns.length; i++) {
 			row[columns[i].trim()] = values[i].trim();
-		}
-		for(let column in this.tables[tableName].columns) {
-			for(let option of this.tables[tableName].columns[column].options) {
-				switch (option) {
-					case "autoincrement":
-						this.tables[tableName].columns[column].sequence = this.tables[tableName].columns[column].sequence || 1;
-						row[column] = this.tables[tableName].columns[column].sequence++;
-						break;
-					case "required":
-						if (!(column in row)) throw `A coluna ${column} é requerida`;
-				}
-			}
 		}
 		this.tables[tableName].data.push(row);
 	}
@@ -86,14 +74,11 @@ class Database {
 };
 
 let database = new Database();
-
-database.execute("create table author (id number autoincrement, name string, age number, city string, state string, country string)");
-database.execute("insert into author (name, age) values (Douglas Crockford, 62)");
-database.execute("insert into author (name, age) values (Linus Torvalds, 47)");
-let resultsBeforeUpdate = database.execute("select id, name, age from author");
-console.log(JSON.stringify(resultsBeforeUpdate));
+database.execute("create table author (id number, name string, age number, city string, state string, country string)");
+database.execute("insert into author (id, name, age) values (1, Douglas Crockford, 62)");
+database.execute("insert into author (id, name, age) values (2, Linus Torvalds, 47)");
 database.execute("update author set name = Martin Fowler, age = 57");
-let resultsAfterUpdate = database.execute("select name, age from author");
+let resultsAfterUpdate = database.execute("select id, name, age from author");
 console.log(JSON.stringify(resultsAfterUpdate));
 
 

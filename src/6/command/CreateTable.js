@@ -18,8 +18,8 @@ export default class CreateTable extends Command {
 			data: []
 		};
 		for(let column of parsedStatement.columns) {
-			let [name, type, ...options] = column.trim().split(" ");
-			this.tables[parsedStatement.tableName].columns[name] = {type, options};
+			let [name, type] = column.trim().split(" ");
+			this.tables[parsedStatement.tableName].columns[name] = type;
 		}
 	}
 }

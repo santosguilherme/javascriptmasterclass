@@ -18,6 +18,7 @@ select name, age from author
 
 1. Crie um método chamado "select"
 2. No método "select", retorne todos os registros considerando apenas as colunas selecionadas
+3. Dentro do método "execute", inclua a chamada para o método "select"
 
 Parte 2
 
