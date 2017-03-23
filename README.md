@@ -19,7 +19,7 @@ insert into author (id, name, age) values (1, Douglas Crockford, 62)
 #### SELECT
 
 ```sql
-select name, age, city from author where id = 1
+select name, age, city from author where age > 50 and age < 60
 ```
 
 #### UPDATE

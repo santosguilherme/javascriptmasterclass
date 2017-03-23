@@ -1,14 +1,18 @@
 ### Exercício 3
 
+#### Objetivo
+Agora vamos começar a organizar as coisas. Na primeira parte do exercício, vamos incorporar no objeto "database", dois métodos: "createTable" e "execute". O método "createTable" já foi implementado no exercício anterior, basta mover os conceitos e utilizar o this para referenciar o objeto "tables". Tome muito cuidado com esta etapa, não tente mover e alterar o comportamento do código ao mesmo tempo, foque apenas em mover o código e fazer funcionar, invocando o método "createTable" diretamente.
+
+Na parte 2, vamos implementar o método "insert". Para isso, é necessário como sempre extrair as informações a partir do comando, converter as informações em um objeto e inserir no array "data", da tabela correspondente.
+
 #### Tempo
-20 minutos
+30 minutos
 
 #### Instruções
 
 Parte 1
 
-1. No objeto "database", crie uma função chamada "createTable", que recebe o statement por parâmetro.
-2. No objeto "database", crie uma função chamada "execute", que recebe o statement por parâmetro e invoca a função correspondente ao comando.
+1. No objeto "database", crie uma função chamada "createTable", que recebe o comando por parâmetro.
 
 Parte 2
 
@@ -20,12 +24,12 @@ insert into author (name, age) values (Linus Torvalds, 47)
 insert into author (name, age) values (Martin Fowler, 54)
 ```
 
-1. No objeto "database", crie uma função chamada "insert", que recebe o statement por parâmetro.
+1. No objeto "database", crie uma função chamada "insert", que recebe o comando por parâmetro.
 2. Dentro da função "insert":
   a. Extraia o nome da tabela, as colunas e os valores.
   b. Monte o objeto que deve ser inserido.
   c. Insira o objeto.
-3. Na função "execute", inclua o comando "insert"
+3. Agora temos dois comandos: "createTable" e "insert". Crie uma função chamada "execute", responsável por chamar o método "createTable" ou "insert", dependendo do comando.
 4. Se a coluna tiver a opção "autoincrement", crie uma propriedade chamada "sequence" para armazenar o contador.
 
 
