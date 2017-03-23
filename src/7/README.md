@@ -1,5 +1,8 @@
 ### Exercício 7
 
+#### Objetivo
+Vamos implementar o suporte para a cláusula where, para o comando select, com suporte para os operadores =, > e <.
+
 #### Tempo
 30 minutos
 
@@ -30,10 +33,10 @@ Exemplo:
 #### Cenário
 
 ```javascript
-database.execute("create table author (id number autoincrement, name string, age number, city string, state string, country string)");
-database.execute("insert into author (name, age) values (Douglas Crockford, 62)");
-database.execute("insert into author (name, age) values (Linus Torvalds, 47)");
-database.execute("insert into author (name, age) values (Martin Fowler, 54)");
+database.execute("create table author (id number, name string, age number, city string, state string, country string)");
+database.execute("insert into author (id, name, age) values (1, Douglas Crockford, 62)");
+database.execute("insert into author (id, name, age) values (2, Linus Torvalds, 47)");
+database.execute("insert into author (id, name, age) values (3, Martin Fowler, 54)");
 database.execute("select id, name, age from author");
 database.execute("select id, name, age from author where id = 1");
 database.execute("select id, name, age from author where id < 60");
