@@ -25,16 +25,31 @@ Parte 3
 
 1. Mude de objeto para função construtora
 
+#### Cenário
+
+```javascript
+database.execute("create table author (id number, name string, age number, city string, state string, country string)");
+database.execute("insert into author (id, name, age) values (1, Douglas Crockford, 62)");
+database.execute("insert into author (id, name, age) values (2, Linus Torvalds, 47)");
+database.execute("insert into author (id, name, age) values (3, Martin Fowler, 54)");
+database.execute("select id, name, age from author");
+```
+
 #### Resultado
 
 ```javascript
 [{
-	"id": 1,
+	"id": "1",
 	"name": "Douglas Crockford",
 	"age": "62"
 }, {
+	"id": "2",
 	"name": "Linus Torvalds",
 	"age": "47"
+}, {
+	"id": "3",
+	"name": "Martin Fowler",
+	"age": "54"
 }]
 ```
 
