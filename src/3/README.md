@@ -80,3 +80,4 @@ database.execute("insert into author (id, name, age) values (1, Linus Torvalds, 
 * String.prototype.startsWith
 * this
 * method
+* Destructuring

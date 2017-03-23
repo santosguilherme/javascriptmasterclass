@@ -51,4 +51,3 @@ create table author (id number, name string, city string, state string, country 
 * for/of
 * Array
 * String.prototype.trim()
-* Destructuring
