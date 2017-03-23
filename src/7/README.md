@@ -35,11 +35,29 @@ database.execute("insert into author (name, age) values (Douglas Crockford, 62)"
 database.execute("insert into author (name, age) values (Linus Torvalds, 47)");
 database.execute("insert into author (name, age) values (Martin Fowler, 54)");
 let result1 = database.execute("select id, name, age from author where id = 1");
-let result2 = database.execute("select id, name, age from author where id < 60");
-let result3 = database.execute("select id, name, age from author where age > 50 and age < 60");
+let result2 = database.execute("select id, name, age from author where id = 1");
+let result3 = database.execute("select id, name, age from author where id < 60");
+let result4 = database.execute("select id, name, age from author where age > 50 and age < 60");
 ```
 
 #### Resultado
+
+
+```javascript
+[{
+	"id": 1,
+	"name": "Douglas Crockford",
+	"age": "62"
+}, {
+	"id": 2,
+	"name": "Linus Torvalds",
+	"age": "47"
+}, {
+	"id": 3,
+	"name": "Martin Fowler",
+	"age": "54"
+}]
+```
 
 ```javascript
 [{

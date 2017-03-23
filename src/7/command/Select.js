@@ -3,10 +3,10 @@ import Command from "./Command"
 export default class Select extends Command {
 
 	parse(statement) {
-		let parsedStatement = statement.match(/select (.*) from (.*) where (.*)/);
+		let parsedStatement = statement.match(/select (.*) from (\w+)(?: where (.*))?/);
 		let [undefined, columns, tableName, clauses] = parsedStatement;
 		columns = columns.split(",");
-		clauses = clauses.split("and");
+		clauses = (clauses) ? clauses.split("and") : [];
 		let clausesIndex = [];
 		clauses.forEach(clause => {
 			let [operator] = clause.match(/(<|>|\=)/);
