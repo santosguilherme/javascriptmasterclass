@@ -71,7 +71,7 @@ let result3 = database.execute("select id, name, age from author where age > 50 
 
 #### Dicas
 
-Você pode utilizar a operação Array.prototype.map para converter um array em outro e ainda utilizaar a operação Array.prototype.filter para filtrar os dados.
+Você pode utilizar a operação Array.prototype.map para converter um array em outro e ainda a operação Array.prototype.filter para filtrar os dados.
 
 #### Conteúdo abordado neste exercício
 
@@ -79,4 +79,3 @@ Você pode utilizar a operação Array.prototype.map para converter um array em 
 * Array.prototype.filter
 * Array.prototype.map
 * Array.prototype.forEach
-* String.prototype.localeCompare
