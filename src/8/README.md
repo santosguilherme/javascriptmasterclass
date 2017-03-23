@@ -1,5 +1,8 @@
 ### Exercício 8
 
+#### Objetivo
+Vamos aproximar o exercício do mundo real. Para isso, no método "execute" da classe "Database", vamos adicionar um tempo de resposta randomico, juntamente com o retorno de uma promise. Com isso, é necessário encadear todas as chamadas para o método "execute", caso contrário, é possível que o método "select", seja executado antes do método "insert".
+
 #### Tempo
 15 minutos
 
@@ -9,23 +12,6 @@
 1. Retorne uma promise no método "execute" da classe "Database"
 2. Altere as chamadas do método "execute" para utilizar o "then" e o "catch"
 
-#### Cenário
-
-```javascript
-database.execute("create table author (id number autoincrement, name string, age number, city string, state string, country string)");
-database.execute("insert into author (name, age) values (Douglas Crockford, 62)");
-let result = database.execute("select id, name, age from author where id = 1");
-```
-
-#### Resultado
-
-```javascript
-[{
-	"id": 1,
-	"name": "Douglas Crockford",
-	"age": "62"
-}]
-```
 
 #### Dicas
 
