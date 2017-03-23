@@ -9,10 +9,11 @@ export default class Select extends Command {
 		clauses = clauses.split("and");
 		let clausesIndex = {};
 		clauses.forEach(clause => {
-			let [column, value] = clause.split("=")
+			let [operator] = clause.match(/(<|>|\=)/);
+			let [column, value] = clause.split(operator);
 			column = column.trim();
 			value = value.trim();
-			return clausesIndex[column] = value;
+			return clausesIndex[column] = {value, operator};
 		});
 		return {columns, tableName, clausesIndex};
 	}
@@ -21,18 +22,33 @@ export default class Select extends Command {
 		if (!(parsedStatement.tableName in this.tables)) throw `A tabela ${parsedStatement.tableName} não existe`;
 	}
 
-	process(parsedStatement) {
+	filter(parsedStatement) {
 		let rows = this.tables[parsedStatement.tableName].data;
 		rows = rows.filter(row => {
-			let ok = true;
+			let ok = false;
 			for(let column in row) {
-				if (column in parsedStatement.clausesIndex && row[column] != parsedStatement.clausesIndex[column]) {
-					ok = false;
-					break;
+				if (column in parsedStatement.clausesIndex) {
+					switch (parsedStatement.clausesIndex[column].operator) {
+						case "=":
+							if (row[column] == parsedStatement.clausesIndex[column].value) ok = true;
+							break;
+						case ">":
+							if (row[column] > parsedStatement.clausesIndex[column].value) ok = true;
+							break;
+						case "<":
+							if (row[column] < parsedStatement.clausesIndex[column].value) ok = true;
+							break;
+					}
+					if (ok) break;
 				}
 			}
 			return ok;
 		});
+		return rows;
+	}
+
+	process(parsedStatement) {
+		let rows = this.filter(parsedStatement);
 		let results = rows.map(row => {
 			var result = {};
 			for(let column of parsedStatement.columns) {
