@@ -31,6 +31,13 @@ insert into author (name, age) values (Martin Fowler, 54)
   c. Insira o objeto
 3. Agora temos dois comandos: "createTable" e "insert". Crie uma função chamada "execute", responsável por chamar o método "createTable" ou "insert", dependendo do comando
 
+#### Cenário
+
+```javascript
+database.execute("create table author (id number, name string, age number, city string, state string, country string)");
+database.execute("insert into author (id, name, age) values (1, Douglas Crockford, 62)");
+database.execute("insert into author (id, name, age) values (1, Linus Torvalds, 47)");
+```
 
 #### Resultado
 

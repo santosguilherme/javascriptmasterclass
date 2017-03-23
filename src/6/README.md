@@ -23,16 +23,17 @@ Parte 2
 3. O método "execute" é um Template Method, ou seja, ele define o comportado que deverá ser executado por uma classe que estende a classe "Command". O método deve invocar 3 outros métodos: parse, validate e process
 4. Extraia cada comando para uma classe específica, que estende a classe "Command"
 5. Divida a lógica de cada comando em 3 métodos: parse, validate e process
-6. Crie uma classe chamada "CommandFactory" e isole o comportamento de construção de instâncias relacionadas aos comandos.
+6. Crie uma classe chamada "CommandFactory" e isole o comportamento de construção de instâncias relacionadas aos comandos
 
 #### Cenário
 
 ```javascript
+let database = new Database();
 database.execute("create table author (id number, name string, age number, city string, state string, country string)");
 database.execute("insert into author (id, name, age) values (1, Douglas Crockford, 62)");
 database.execute("insert into author (id, name, age) values (2, Linus Torvalds, 47)");
 database.execute("update author set name = Martin Fowler, age = 57");
-let result = database.execute("select id, name, age from author"));
+database.execute("select id, name, age from author");
 ```
 
 #### Resultado
