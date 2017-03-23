@@ -11,13 +11,13 @@ Chegou a hora de começar a manipular objetos. Com base no exercício anterior, 
 Dada o comando:
 
 ```sql
-create table author (id number autoincrement, name string, city string, state string, country string)
+create table author (id number, name string, city string, state string, country string)
 ```
 
 1. Crie um objeto chamado "database"
 2. Dentro do objeto "database", crie um objeto chamado "tables"
 3. Dentro do objeto "tables", crie um objeto com o nome da tabela
-4. Dentro do objeto criado com o nome da tabela, crie um objeto chamado "columns", onde as chaves são representadas pelo nome da coluna e o valor é um objeto contendo uma propriedade chamada "type" e outra chamada "options", que é um array
+4. Dentro do objeto criado com o nome da tabela, crie um objeto chamado "columns", onde as chaves são representadas pelo nome da coluna e o valor pelo tipo
 5. Dentro do objeto criado com nome da tabela, crie um array chamado "data"
 
 #### Resultado
@@ -27,30 +27,12 @@ create table author (id number autoincrement, name string, city string, state st
 	"tables": {
 		"author": {
 			"columns": {
-				"id": {
-					"type": "number",
-					"options": ["autoincrement"]
-				},
-				"name": {
-					"type": "string",
-					"options": []
-				},
-				"age": {
-					"type": "number",
-					"options": []
-				},
-				"city": {
-					"type": "string",
-					"options": []
-				},
-				"state": {
-					"type": "string",
-					"options": []
-				},
-				"country": {
-					"type": "string",
-					"options": []
-				}
+				"id": "number",
+				"name": "string",
+				"age": "number",
+				"city": "string",
+				"state": "string",
+				"country": "string"
 			},
 			"data": []
 		}

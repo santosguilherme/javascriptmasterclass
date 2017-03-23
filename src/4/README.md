@@ -1,5 +1,8 @@
 ### Exercício 4
 
+#### Objetivo
+Neste exercício, vamos implementar o método "select" na primeira parte. Depois, já na segunda parte, vamos introduzir o tratamento de erros, lançando um erro caso a tabela não exista. Por fim, vamos migrar de objeto para função construtora. Lembre-se de mudar a forma como o this é utilizado.
+
 #### Tempo
 30 minutos
 
@@ -13,13 +16,12 @@ Dada o comando:
 select name, age from author
 ```
 
-1. Crie uma função chamada "select".
-2. Na função "select", retorne todos os registros considerando apenas as colunas selecionadas.
-3. Na função "execute", inclua o comando "select"
+1. Crie um método chamado "select"
+2. No método "select", retorne todos os registros considerando apenas as colunas selecionadas
 
 Parte 2
 
-1. Faça o tratamento de erros, lançando um erro caso a tabela ou a coluna não exista.
+1. Faça o tratamento de erros, lançando um erro caso a tabela ou a coluna não exista
 
 Parte 3
 
@@ -28,6 +30,7 @@ Parte 3
 #### Cenário
 
 ```javascript
+let database = new Database();
 database.execute("create table author (id number, name string, age number, city string, state string, country string)");
 database.execute("insert into author (id, name, age) values (1, Douglas Crockford, 62)");
 database.execute("insert into author (id, name, age) values (2, Linus Torvalds, 47)");

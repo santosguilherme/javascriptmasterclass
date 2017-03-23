@@ -24,12 +24,12 @@ insert into author (name, age) values (Linus Torvalds, 47)
 insert into author (name, age) values (Martin Fowler, 54)
 ```
 
-1. No objeto "database", crie uma função chamada "insert", que recebe o comando por parâmetro.
+1. No objeto "database", crie uma função chamada "insert", que recebe o comando por parâmetro
 2. Dentro da função "insert":
-  a. Extraia o nome da tabela, as colunas e os valores.
-  b. Monte o objeto que deve ser inserido.
-  c. Insira o objeto.
-3. Agora temos dois comandos: "createTable" e "insert". Crie uma função chamada "execute", responsável por chamar o método "createTable" ou "insert", dependendo do comando.
+  a. Extraia o nome da tabela, as colunas e os valores
+  b. Monte o objeto que deve ser inserido
+  c. Insira o objeto
+3. Agora temos dois comandos: "createTable" e "insert". Crie uma função chamada "execute", responsável por chamar o método "createTable" ou "insert", dependendo do comando
 
 
 #### Resultado
