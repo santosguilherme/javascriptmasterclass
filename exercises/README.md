@@ -1,6 +1,8 @@
-# Instruções
+# Exercícios
 
-Os exercícios estão divididos em de 1 a 8:
+Dentro desta pasta, temos as instruções e a resolução de cada exercício, divididos de 1 a 8, e também a pasta *solution*, que deve ser utilizada para resolver o exercício.
+
+# Instruções
 
 * [Exercício 1](instruction/1.md)
 * [Exercício 2](instruction/2.md)
