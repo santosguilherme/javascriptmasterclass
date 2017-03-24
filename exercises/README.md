@@ -1,6 +1,6 @@
 # Exercícios
 
-Dentro desta pasta, temos as instruções e a resolução de cada exercício, divididos de 1 a 8, e também a pasta *solution*, que deve ser utilizada para resolver o exercício.
+Dentro desta pasta, temos as instruções e a resolução de cada exercício, divididos de 1 a 8, e também a pasta **solution**, que deve ser utilizada para resolver o exercício. O arquivo principal será sempre **main.js**.Após realizar o processo de compilação com o Babel, os arquivos serão gerados na pasta *dist/*.
 
 # Instruções
 
@@ -12,3 +12,10 @@ Dentro desta pasta, temos as instruções e a resolução de cada exercício, di
 * [Exercício 6](instruction/6.md)
 * [Exercício 7](instruction/7.md)
 * [Exercício 8](instruction/8.md)
+
+# Execução
+
+```sh
+cd dist/
+node main.js
+```
