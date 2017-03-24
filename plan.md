@@ -41,11 +41,11 @@
 ### 26/03
 
 #### 08:30
-##### Errors 0:15
-##### Exercício 4 0:30
-##### Correção do Exercício 4 0:15
-##### Classes 0:45
-##### Proxy e Reflect 0:30
+* ##### Errors 0:15
+* ##### Exercício 4 0:30
+* ##### Correção do Exercício 4 0:15
+* ##### Classes 0:45
+* ##### Proxy e Reflect 0:30
 
 #### 10:15
 ##### Coffee Break 0:15
