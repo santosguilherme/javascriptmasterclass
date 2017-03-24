@@ -40,3 +40,9 @@ Os exercícios estão divididos em de 1 a 8:
 
 * [Exercício 1](1.md)
 * [Exercício 2](2.md)
+* [Exercício 3](3.md)
+* [Exercício 4](4.md)
+* [Exercício 5](5.md)
+* [Exercício 6](6.md)
+* [Exercício 7](7.md)
+* [Exercício 8](8.md)
