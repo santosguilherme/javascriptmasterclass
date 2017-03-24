@@ -80,7 +80,7 @@ Seja bem-vindo ao JavaScript Masterclass. Neste documento, você encontrará inf
 
 # Exercícios
 
-Ao longo do treinamento, vamos construir, passo a passo, um **gerenciador de banco de dados**, ou SGBD, com **suporte para a linguagem SQL**. [Clique aqui para ver as instruções](exercises/instruction).
+Ao longo do treinamento, vamos construir, passo a passo, um **gerenciador de banco de dados**, ou SGBD, com **suporte para a linguagem SQL**. [Clique aqui para ver as instruções](exercises).
 
 Os comandos suportados são:
 
