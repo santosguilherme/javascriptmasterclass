@@ -2,7 +2,7 @@ Seja bem-vindo ao JavaScript Masterclass. Neste documento, você encontrará inf
 
 # Plano de Aula
 
-## Aula 1
+### Aula 1
 
 #### 08:30
 * Introdução 0:15
@@ -22,7 +22,7 @@ Seja bem-vindo ao JavaScript Masterclass. Neste documento, você encontrará inf
 #### 12:15
 * Almoço 01:30
 
-## Aula 2
+### Aula 2
 
 #### 13:45
 * Exercício 2 0:15
@@ -40,7 +40,7 @@ Seja bem-vindo ao JavaScript Masterclass. Neste documento, você encontrará inf
 * Function - Parte 2 1:00
 * Execution Context e Closure 0:30
 
-## Aula 3
+### Aula 3
 
 #### 08:30
 * Errors 0:15
@@ -60,7 +60,7 @@ Seja bem-vindo ao JavaScript Masterclass. Neste documento, você encontrará inf
 #### 11:45
 * Almoço 01:30
 
-## Aula 4
+### Aula 4
 
 #### 13:15
 * Exercício 6 0:45
@@ -82,9 +82,9 @@ Seja bem-vindo ao JavaScript Masterclass. Neste documento, você encontrará inf
 
 Dentro da pasta _exercises/_ existem 3 pastas: 
 
-_instruction/_: Instruções de cada exercício, de 1 a 8.
-_resolution/_: Resolução do exercício, individual de cada aluno.
-_solution/_: Solução de cada exercício, para consulta.
+* _instruction/_: Instruções de cada exercício, de 1 a 8.
+* _resolution/_: Resolução do exercício, individual de cada aluno.
+* _solution/_: Solução de cada exercício, para consulta.
 
 # Configuração do Ambiente
 
