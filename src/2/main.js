@@ -8,6 +8,11 @@ let database = {
 	tables: {}
 };
 
+Object.defineProperty(database, 'tables', {
+	writable: false,
+	configurable: false
+});
+
 database.tables[tableName] = {
 	columns: {},
 	data: []
