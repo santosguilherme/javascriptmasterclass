@@ -1,44 +1,111 @@
-# JavaScript Masterclass
+Seja bem-vindo ao JavaScript Masterclass. Neste documento, você encontrará informações importantes sobre o treinamento como o *Plano de Aula*, *Exercícios* e *Configuração do Ambiente*.
 
-Ao longo do treinamento, vamos construir, passo a passo, um **gerenciador de banco de dados**, ou SGBD, com **suporte para a linguagem SQL**.
+# Plano de Aula
 
-Os comandos suportados são:
+## Aula 1
 
-#### CREATE TABLE
+#### 08:30
+* Introdução 0:15
+* Tipos de dados 0:15
+* Tipos de variáveis 0:15
+* Number, String, Boolean, Symbol, undefined, null 0:30
+* RegExp 0:30
+* Exercício 1 0:15
 
-```sql
-create table author (id number, name string, age number, city string, state string, country string)
-```
+#### 10:30
+* Coffee Break 0:15
 
-#### INSERT
+#### 10:45
+* Correção do Exercício 1 0:15
+* Object 1:15
 
-```sql
-insert into author (id, name, age) values (1, Douglas Crockford, 62)
-```
+#### 12:15
+* Almoço 01:30
 
-#### SELECT
+## Aula 2
 
-```sql
-select name, age, city from author where age > 50 and age < 60
-```
+#### 13:45
+* Exercício 2 0:15
+* Correção do Exercício 2 0:15
+* Function - Parte 1 1:00
+* Arrow Function 0:15
+* Destructuring 0:30
 
-#### UPDATE
+#### 16:00
+* Coffee Break 0:15
 
-```sql
-update author set age = 45 where id = 2
-```
+#### 16:15
+* Exercício 3 0:15
+* Correção do Exercício 3 0:15
+* Function - Parte 2 1:00
+* Execution Context e Closure 0:30
 
-### Configuração
+## Aula 3
+
+#### 08:30
+* Errors 0:15
+* Exercício 4 0:30
+* Correção do Exercício 4 0:15
+* Classes 0:45
+* Proxy e Reflect 0:30
+
+#### 10:15
+* Coffee Break 0:15
+
+#### 10:30
+* Exercício 5 0:30
+* Correção do Exercício 5 0:15
+* Modules 0:30
+
+#### 11:45
+* Almoço 01:30
+
+## Aula 4
+
+#### 13:15
+* Exercício 6 0:45
+* Correção do Exercício 6 0:15
+* Array Map Set WeakMap WeakSet 1:00
+
+#### 15:30
+* Coffee Break 0:15
+
+#### 15:45
+* Exercício 7 0:45
+* Correção do Exercício 7 0:15
+* Promises 0:15
+* Generators 0:15
+* Exercício 8 0:30
+* Correção do Exercício 8 0:15
+
+# Exercícios
+
+Dentro da pasta _exercises/_ existem 3 pastas: 
+
+_instruction/_: Instruções de cada exercício, de 1 a 8.
+_resolution/_: Resolução do exercício, individual de cada aluno.
+_solution/_: Solução de cada exercício, para consulta.
+
+# Configuração do Ambiente
+
+No ambiente, vamos precisar do Node.js instalado, versão 6.10.0+ e também do Git.
 
 Recomendo a utilização do babel para auxiliar na compilação do código, indicando qualquer erro de sintaxe que possa surgir e também para converter o código escrito em ECMA6 para ECMA5.1, em casos de funcionalidades que ainda não são suportadas pelo Node.js, como Modules. 
+
+#### Instalação dos módulos
+
+```sh
+npm install
+```
+
+#### Instalação do Babel
 
 ```sh
 npm install -g babel
 ```
 
-```sh
-npm install
-```
+#### Execução do Babel
+
 
 ```sh
 npm run-script babel

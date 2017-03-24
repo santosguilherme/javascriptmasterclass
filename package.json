@@ -4,7 +4,7 @@
   "description": "",
   "main": "",
   "scripts": {
-    "babel": "babel src/ -d dist --watch"
+    "babel": "babel exercises/ -d dist/ --watch"
   },
   "author": "Rodrigo Branas",
   "license": "ISC",
