@@ -114,6 +114,10 @@ update author set age = 45 where id = 2
 delete from author where age < 50
 ```
 
+# Slides
+
+[Clique aqui para acessar os slides](slides)
+
 # Configuração do Ambiente
 
 No ambiente, vamos precisar do Node.js instalado, versão 6.10.0+ e também do Git.
