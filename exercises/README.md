@@ -1,6 +1,6 @@
 # Exercícios
 
-Dentro desta pasta, temos as instruções, na pasta **instructions**, e a resolução de cada exercício, na pasta **solutions**. Tudo, tanto as instruções quanto as soluções estão divididos de 1 a 8.  
+Dentro desta pasta, temos as instruções, na pasta **instructions**, e a resolução de cada exercício, na pasta **solutions**.
 
 Para resolver os exercícios, utilize apenas a pasta **student**, sempre dentro do arquivo **main.js**.  
 
