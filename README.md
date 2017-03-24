@@ -116,7 +116,7 @@ delete from author where age < 50
 
 # Slides
 
-[Clique aqui para acessar os slides](slides)
+[Clique aqui para fazer o download os slides](http://www.agilecode.com.br/javascriptmasterclass/slides.zip)
 
 # Configuração do Ambiente
 
