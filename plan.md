@@ -36,8 +36,6 @@
 * Function - Parte 2 1:00
 * Execution Context e Closure 0:30
 
-#### 18:15
-
 ### 26/03
 
 #### 08:30
@@ -74,5 +72,3 @@
 * Generators 0:15
 * Exercício 8 0:30
 * Correção do Exercício 8 0:15
-
-#### 18:00
