@@ -80,11 +80,39 @@ Seja bem-vindo ao JavaScript Masterclass. Neste documento, você encontrará inf
 
 # Exercícios
 
-Dentro da pasta _exercises/_ existem 3 pastas: 
+Ao longo do treinamento, vamos construir, passo a passo, um **gerenciador de banco de dados**, ou SGBD, com **suporte para a linguagem SQL**. [Clique aqui para ver as instruções](exercises/instructions).
 
-* _instruction/_: Instruções de cada exercício, de 1 a 8.
-* _resolution/_: Resolução do exercício, individual de cada aluno.
-* _solution/_: Solução de cada exercício, para consulta.
+Os comandos suportados são:
+
+#### CREATE TABLE
+
+```sql
+create table author (id number, name string, age number, city string, state string, country string)
+```
+
+#### INSERT
+
+```sql
+insert into author (id, name, age) values (1, Douglas Crockford, 62)
+```
+
+#### SELECT
+
+```sql
+select name, age, city from author where age > 50 and age < 60
+```
+
+#### UPDATE
+
+```sql
+update author set age = 45 where id = 2
+```
+
+#### DELETE
+
+```sql
+delete from author where age < 50
+```
 
 # Configuração do Ambiente
 
