@@ -10,7 +10,8 @@ let database = {
 
 Object.defineProperty(database, 'tables', {
 	writable: false,
-	configurable: false
+	configurable: false,
+	enumerable: true
 });
 
 database.tables[tableName] = {
