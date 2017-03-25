@@ -35,34 +35,35 @@ Seja bem-vindo ao JavaScript Masterclass. Neste documento, você encontrará inf
 * Coffee Break 0:15
 
 #### 16:15
-* Exercício 3 0:15
+* Exercício 3 0:30
 * Correção do Exercício 3 0:15
 * Function - Parte 2 1:00
-* Execution Context e Closure 0:30
+* Errors 0:15
 
 ### Aula 3
 
 #### 08:30
-* Errors 0:15
-* Exercício 4 0:30
-* Correção do Exercício 4 0:15
-* Classes 0:45
-* Proxy e Reflect 0:30
 
-#### 10:15
-* Coffee Break 0:15
+* Exercício 4 0:45
+* Correção do Exercício 4 0:15
+* Execution Context e Closure 0:30
+* Classes 0:30
 
 #### 10:30
-* Exercício 5 0:30
-* Correção do Exercício 5 0:15
-* Modules 0:30
+* Coffee Break 0:15
 
-#### 11:45
+#### 10:45
+* Proxy e Reflect 0:15
+* Exercício 5 0:45
+* Correção do Exercício 5 0:15
+
+#### 12:00
 * Almoço 01:30
 
 ### Aula 4
 
-#### 13:15
+#### 13:30
+* Modules 0:30
 * Exercício 6 0:45
 * Correção do Exercício 6 0:15
 * Array Map Set WeakMap WeakSet 1:00
