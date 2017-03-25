@@ -1,14 +1,29 @@
-const SQL_COMMAND = 'create table author (id number, name string, city string, state string, country string)';
+const SQL_COMMAND = 'create table author (id number, name string, city string, state string, country string)',
+      extractedCommand = SQL_COMMAND.match(/^create table ([a-z]+) \(([a-z\s,]+)\)$/),
+      tableName = extractedCommand[1],
+      columns = extractedCommand[2].split(/,\s?/),
+      database = {
+        tables: {
+          [tableName]: {
+            columns: {},
+            data: []
+          }
+        }
+      };
 
-const extracted = SQL_COMMAND.match(/^create table ([a-z]+) \(([a-z\s,]+)\)$/);
+Object.assign(database.tables[tableName].columns,
+  ...columns.map(column => {
+    const columnExtracted = column.split(/\s/);
 
-//Extraia o nome da tabela e armazene em uma variável chamada "tableName"
-const tableName = extracted[1];
+    return {[columnExtracted[0]]: columnExtracted[1]};
+  }));
 
-//Extraia as colunas da tabela e armazene em uma variável chamada "columns"
-let columns = extracted[2];
+Object.defineProperty(database, 'tables', {
+  writable: false,
+  configurable: false,
+  enumerable: true
+});
 
-//Manipule a variável "columns", removendo os parênteses e separando cada coluna, com seu respectivo tipo, em uma string separada.
-columns = columns.split(/,\s?/);
+delete database.tables;
+console.log(JSON.stringify(database));
 
-console.log('tableName', tableName, 'columns', columns);
