@@ -20,11 +20,11 @@ Seja bem-vindo ao JavaScript Masterclass. Neste documento, você encontrará inf
 * Object 1:15
 
 #### 12:15
-* Almoço 01:30
+* Almoço 01:30 (R$32,00 com bebida, livre)
 
 ### Aula 2
 
-#### 13:45
+#### 14:00
 * Exercício 2 0:15
 * Correção do Exercício 2 0:15
 * Function - Parte 1 1:00
