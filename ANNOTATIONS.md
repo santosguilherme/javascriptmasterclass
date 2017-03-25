@@ -1,0 +1,2 @@
+- Locale Compare (comparar Strings acentuadas);
+- Symbol - Identificar a propriedade de um objeto (pode promover a privacidade e pevenir a sobreescrita);
