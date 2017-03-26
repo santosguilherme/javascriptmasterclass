@@ -8,3 +8,4 @@
 * Object.freeze (tudo false)
 * get e set no atributo do object (encapsulamento), depois com proxy
 * atribuindo valores diretamente a variáveis com conversão de nomes
+* https://kangax.github.io/compat-table/es6/
