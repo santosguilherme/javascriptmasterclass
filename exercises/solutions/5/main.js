@@ -5,15 +5,10 @@ class Table {
 	}
 }
 
-class Tables {
-	constructor () {
-	}
-}
-
 class Database {
 	constructor(name = "New Database") {
 		this.name = name;
-		this.tables = new Tables();
+		this.tables = {};
 	}
 
 	execute(statement) {
