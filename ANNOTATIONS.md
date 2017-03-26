@@ -10,3 +10,4 @@
 * atribuindo valores diretamente a variáveis com conversão de nomes
 * https://kangax.github.io/compat-table/es6/
 * Proxy - Reflect
+* Map
