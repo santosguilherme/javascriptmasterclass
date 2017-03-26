@@ -1,36 +1,42 @@
-const Database = function () {
-  let tables = {};
+class Table {
+  constructor() {
+    this.columns = {};
+    this.data = [];
+  }
+}
 
-  this.execute = function (command) {
-    if (command.startsWith('create table')) {
-      return createTable(command);
+class Database {
+  constructor(name = 'New Database') {
+    this.name = name;
+    this.tables = {};
+  }
+
+  execute(command) {
+    const regex = /^(create|select|insert)/;
+    const method = command.match(regex)[0];
+
+    if(!method){
+      throw `Operação ${method} não enconstrada`;
     }
 
-    if (command.startsWith('insert into')) {
-      return insert(command);
-    }
+    return this[method](command);
+  }
 
-    if (command.startsWith('select')) {
-      return select(command);
-    }
-  };
-
-  const createTable = function (createCommand) {
+  create(createCommand) {
     const regex = /^create table ([a-z]+) \(([a-z\s,]+)\)$/;
     let [, tableName, columns] = createCommand.match(regex);
     columns = columns.split(/,\s?/);
 
-    tables[tableName] = {
-      columns: Object.assign({}, ...columns.map(column => {
-        const [key, value] = column.split(/\s/);
+    this.tables[tableName] = new Table();
 
-        return {[key]: value};
-      })),
-      data: []
-    };
-  };
+    Object.assign(this.tables[tableName].columns, ...columns.map(column => {
+      const [key, value] = column.split(/\s/);
 
-  const insert = function (insertCommand) {
+      return {[key]: value};
+    }));
+  }
+
+  insert(insertCommand) {
     const regex = /^insert into ([a-z]+) \(([a-z\s,]+)\) values \(([\w\s,]+)\)$/;
     let [, tableName, columns, values] = insertCommand.match(regex);
     columns = columns.split(/,\s?/);
@@ -44,19 +50,19 @@ const Database = function () {
       });
     }
 
-    tables[tableName].data.push(insertObject);
-  };
+    this.tables[tableName].data.push(insertObject);
+  }
 
-  const select = function (selectCommand) {
+  select(selectCommand) {
     const regex = /^select ([a-z\s,]+) from ([a-z]+)$/;
     let [, columns, tableName] = selectCommand.match(regex);
     columns = columns.split(/,\s?/);
 
-    if (!(tableName in tables)) {
+    if (!(tableName in this.tables)) {
       throw `Não existe tabela criada com o nome ${tableName}`;
     }
 
-    return tables[tableName].data.map(row => {
+    return this.tables[tableName].data.map(row => {
       let returnObj = {};
 
       for (let column of columns) {
@@ -66,11 +72,13 @@ const Database = function () {
       return returnObj;
     });
   };
-};
+}
 
-const database = new Database();
+const database = new Database('Javascript Masterclass');
 database.execute("create table author (id number, name string, age number, city string, state string, country string)");
 database.execute("insert into author (id, name, age) values (1, Douglas Crockford, 62)");
 database.execute("insert into author (id, name, age) values (2, Linus Torvalds, 47)");
 database.execute("insert into author (id, name, age) values (3, Martin Fowler, 54)");
 console.log(JSON.stringify(database.execute("select id, name, age from author")));
+
+console.log(database.name);
