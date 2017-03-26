@@ -63,21 +63,22 @@ Seja bem-vindo ao JavaScript Masterclass. Neste documento, você encontrará inf
 ### Aula 4
 
 #### 13:30
-* Modules 0:30
+* Array Map Set WeakMap WeakSet 1:00
 * Exercício 6 0:45
 * Correção do Exercício 6 0:15
-* Array Map Set WeakMap WeakSet 1:00
 
 #### 15:30
 * Coffee Break 0:15
 
 #### 15:45
-* Exercício 7 0:45
+* Modules 0:15
+* Exercício 7 0:15
 * Correção do Exercício 7 0:15
 * Promises 0:15
+* Exercício 8 0:15
+* Correção do Exercício 8 0:05
 * Generators 0:15
-* Exercício 8 0:30
-* Correção do Exercício 8 0:15
+* Async/Await 0:15
 
 # Exercícios
 
