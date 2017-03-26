@@ -1,16 +1,11 @@
-class Database {
-	constructor(name = "New Database") {
-		this.name = name;
-		this.tables = {};
+class Table {
+	constructor() {
+		this.columns = {};
+		this.data = [];
 	}
 
-	execute(statement) {
-		let [,init] = statement.match(/([a-z]+)/);
-		return this[init](statement);
-	}
-
-	getData(tableName, clauses) {
-		let rows = this.tables[tableName].data;
+	getData(clauses) {
+		let rows = this.data;
 		rows = rows.filter(row => {
 			let ok = true;
 			for(let column in row) {
@@ -34,15 +29,29 @@ class Database {
 		});
 		return rows;
 	}
+}
+
+class Tables {
+	constructor () {
+	}
+}
+
+class Database {
+	constructor(name = "New Database") {
+		this.name = name;
+		this.tables = new Tables();
+	}
+
+	execute(statement) {
+		let [,init] = statement.match(/([a-z]+)/);
+		return this[init](statement);
+	}
 
 	create(statement) {
 		let parsedStatement = statement.match(/create table ([a-z]+) (\(.*\))/);
 		let [undefined, tableName, columns] = parsedStatement;
 		columns = columns.replace(/(\(|\))/g, "").split(",");
-		this.tables[tableName] = {
-			columns: {},
-			data: []
-		};
+		this.tables[tableName] = new Table();
 		for(let column of columns) {
 			let [name, type] = column.trim().split(" ");
 			this.tables[tableName].columns[name] = type;
@@ -74,7 +83,7 @@ class Database {
 		}
 		if (!(tableName in this.tables)) throw `A tabela ${tableName} não existe`;
 		var results = [];
-		for(let row of this.getData(tableName, clausesArray)) {
+		for(let row of this.tables[tableName].getData(clausesArray)) {
 			var result = {};
 			for(let column of columns) {
 				column = column.trim();

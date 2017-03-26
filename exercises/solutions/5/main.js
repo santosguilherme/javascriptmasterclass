@@ -1,7 +1,19 @@
+class Table {
+	constructor() {
+		this.columns = {};
+		this.data = [];
+	}
+}
+
+class Tables {
+	constructor () {
+	}
+}
+
 class Database {
 	constructor(name = "New Database") {
 		this.name = name;
-		this.tables = {};
+		this.tables = new Tables();
 	}
 
 	execute(statement) {
@@ -13,10 +25,7 @@ class Database {
 		let parsedStatement = statement.match(/create table ([a-z]+) (\(.*\))/);
 		let [undefined, tableName, columns] = parsedStatement;
 		columns = columns.replace(/(\(|\))/g, "").split(",");
-		this.tables[tableName] = {
-			columns: {},
-			data: []
-		};
+		this.tables[tableName] = new Table();
 		for(let column of columns) {
 			let [name, type] = column.trim().split(" ");
 			this.tables[tableName].columns[name] = type;
