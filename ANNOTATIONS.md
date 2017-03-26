@@ -11,3 +11,4 @@
 * https://kangax.github.io/compat-table/es6/
 * Proxy - Reflect
 * Map
+* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
