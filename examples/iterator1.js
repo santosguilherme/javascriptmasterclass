@@ -2,13 +2,7 @@ function iter(a) {
 	let i = 0;
 	return {
 		next: function () {
-			return (i < a.length) ? {
-				value: a[i++],
-				done: false
-			} :
-			{
-				done: true
-			}
+			return (i < a.length) ? { value: a[i++], done: false} : {done: true};
 		}
 	}
 }
@@ -19,5 +13,4 @@ let x = iter(a);
 console.log(x.next().value);
 console.log(x.next().value);
 console.log(x.next().value);
-console.log(x.next().value);
-
+console.log(x.next().done);
