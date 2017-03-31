@@ -7,6 +7,18 @@ function getResult(value) {
 	});
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
 function co(fn) {
 	iterateOver(fn());
 }
